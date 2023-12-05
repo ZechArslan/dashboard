@@ -15,7 +15,6 @@ table.dataTable tfoot th {
   border: 1px solid #222222 !important;
 
   padding: 6px 14px !important;
- 
 }
 .actionsIcons img {
   height: 13px !important;
@@ -69,19 +68,20 @@ table.dataTable thead th {
   border-bottom: 1px solid rgb(34, 34, 34);
 }
 
-
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-    background: transparent !important;
-    color: #e0e0e0 !important;
-    border: 1px solid #e0e0e0 !important;
-    cursor: pointer;
-    background-color: #222222 !important;
-  }
-  .dataTables_wrapper .dataTables_paginate .paginate_button:hover{
-    background:none;
-    cursor: pointer;
-    color: rgb(224, 224, 224) !important;
-    border: 1px solid rgb(243 241 241);
-    
-  }
+  background: transparent !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #e0e0e0 !important;
+  cursor: pointer;
+  background-color: #222222 !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: none;
+  cursor: pointer;
+  color: rgb(224, 224, 224) !important;
+  border: 1px solid rgb(243 241 241);
+}
 
+.table-condensed thead tr {
+    background-color: white !important;
+}
