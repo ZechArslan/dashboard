@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transactions</title>
+    <link rel="stylesheet" href="daterangepicker.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
+    <link rel="stylesheet" href="datatables.min.css" />
+    <link rel="stylesheet" href="style.css?v=222" />
+    <style>
+      div#viewTrade-Modal-pnl div.dt-buttons,
+      div#viewTrade-Modal div.dt-buttons {
+        padding-right: 0;
+      }
+      .statsinfo {
+        font-size: 14px;
+        color: #444;
+      }
+      .statsinfo span {
+        min-width: 200px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="title-head">
+          <h2>Lemuria</h2>
+        </div>
+        <div class="button-sett">
+          <button id="export-all" class="dt-button">
+            <span> Export All </span>
+          </button>
+          <div class="feild-set1">
+            <fieldset class="cust-feld-st">
+              <legend>Export Token Leader Board</legend>
+              <input
+                class="token-pnl"
+                placeholder="Token Address"
+                id="pnl-input-address"
+                type="text"
+              />
+              <button class="dt-button" id="pnl-by-token" type="button">
+                Export
+              </button>
+            </fieldset>
+          </div>
+          <!-- </form> -->
+        </div>
+        <div class="date-range">
+          <input id="daterangeval" type="text" name="daterange" value="" />
+        </div>
+        <div class="statsinfo">
+          <span>Starting Block: <b>14587720</b></span>
+          <span>Ending Block: <b>15973419</b></span>
+        </div>
+        <table id="dt_table" class="display" style="width: 100%">
+          <thead>
+            <tr>
+              <th>Address</th>
+              <th>P&L</th>
+              <!-- <th>P&L ETH Value</th> -->
+              <th>P&L %</th>
+              <th>% Gain/Trade</th>
+              <th>Balance</th>
+              <th>Txs</th>
+              <th>Trades</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Address</th>
+              <th>P&L</th>
+              <!-- <th>P&L ETH Value</th> -->
+              <th>P&L %</th>
+              <th>% Gain/Trade</th>
+              <th>Balance</th>
+              <th>Txs</th>
+              <th>Trades</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <!-- modal 1 -->
+
+    <div id="viewTrade-Modal" class="modal modal-summary viewTrade-Modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="title-head">
+            <h2>Trades <a class="address11" href="#" target="_blank"></a></h2>
+          </div>
+          <div class="cross-svg">
+            <span><img src="cross-coin.svg" alt="" /></span>
+          </div>
+          <table id="dt_mtable" class="display" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Address</th>
+                <th>TxID</th>
+                <th title="From Token">From</th>
+                <th title="To Token">To</th>
+                <th>From Amount</th>
+                <th>To Amount</th>
+                <th>$From Amount</th>
+                <th>$To Amount</th>
+                <th title="PNL USD">P&L</th>
+                <th>P&L ETH</th>
+                <th>Date</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Address</th>
+                <th>TxID</th>
+                <th title="From Token">From</th>
+                <th title="To Token">To</th>
+                <th>From Amount</th>
+                <th>To Amount</th>
+                <th>$From Amount</th>
+                <th>$To Amount</th>
+                <th title="PNL USD">P&L</th>
+                <th>P&L ETH</th>
+                <th>Date</th>
+                <th>Price</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- modal 1 -->
+    <!-- modal 2 -->
+    <div
+      id="viewTrade-Modal-pnl"
+      class="modal modal-summary viewTrade-Modal-pnl"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="title-head">
+            <h2>PNL <a class="address11" href="#" target="_blank"></a></h2>
+          </div>
+          <div class="cross-svg">
+            <span><img src="cross-coin.svg" alt="" /></span>
+          </div>
+          <table id="dt_mtable_pnl" class="display" style="width: 100%">
+            <thead>
+              <tr>
+                <th>Address</th>
+                <th>Token</th>
+                <th>Bought</th>
+                <th>Sold</th>
+                <th>Un Sold</th>
+                <th>Realized P&L</th>
+                <th>UnRealized P&L</th>
+                <th>Total P&L</th>
+                <th>Transfer Value</th>
+                <th>TradeCount</th>
+                <th>Status</th>
+                <th>Entry Price</th>
+                <th>Exit Price</th>
+                <th>Entry Date</th>
+                <th>Exit Date</th>
+              </tr>
+            </thead>
+            <tfoot>
+              <tr>
+                <th>Address</th>
+                <th>Token</th>
+                <th>Bought</th>
+                <th>Sold</th>
+                <th>Un Sold</th>
+                <th>Realized P&L</th>
+                <th>UnRealized P&L</th>
+                <th>Total P&L</th>
+                <th>Transfer Value</th>
+                <th>TradeCount</th>
+                <th>Status</th>
+                <th>Entry Price</th>
+                <th>Exit Price</th>
+                <th>Entry Date</th>
+                <th>Exit Date</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- modal 2 -->
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="datatables.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/plug-ins/1.11.5/api/sum().js"
+    ></script>
+    <script type="text/javascript" src="moment.min.js"></script>
+    <script type="text/javascript" src="daterangepicker.js"></script>
+    <script src="buttons.colVis.min.js"></script>
+
+    <!-- <script src="package.js"></script> -->
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
+
+    <script>
+      $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+
+        var dataRange = [false, true, true, true, true, true, true, false];
+        var Api;
+        var datestart = "";
+        var dateend = "";
+        $('input[name="daterange"]').on(
+          "cancel.daterangepicker",
+          function (ev, picker) {
+            // $('input[name="daterange"]').daterangepicker({ startDate: '11/10/2022', endDate: '11/10/2022' });
+            $(this)
+              .data("daterangepicker")
+              .setStartDate(moment().format("MM-DD-YYYY")); //date now
+            $(this)
+              .data("daterangepicker")
+              .setEndDate(moment().format("MM-DD-YYYY")); //date now
+            datestart = "";
+            dateend = "";
+          }
+        );
+        var startt = "04/15/2022";
+        // var endt = '11/15/2022'
+        var enddt = new Date();
+        var endt =
+          enddt.getMonth() +
+          1 +
+          "/" +
+          enddt.getDate() +
+          "/" +
+          enddt.getFullYear();
+        console.log("endt", endt);
+        $('input[name="daterange"]').daterangepicker(
+          {
+            opens: "left",
+            dateFormat: "dd/mm/yy",
+            // startDate:  startt, //moment(),
+            // endDate: endt, //moment().add(20, 'day'),
+            minDate: startt, // moment(),
+            maxDate: endt, // moment().add(20, 'day'),
+          },
+          function (start, end, label) {
+            datestart = start.format("YYYY-MM-DD");
+            dateend = end.format("YYYY-MM-DD");
+
+            // $(this).data('daterangepicker').setStartDate(startt); //date now
+            // $(this).data('daterangepicker').setEndDate(endt);//date now
+            console.log(
+              "A new date selection was made: " +
+                start.format("YYYY-MM-DD") +
+                " to " +
+                end.format("YYYY-MM-DD")
+            );
+          }
+        );
+        $('input[name="daterange"]')
+          .data("daterangepicker")
+          .setStartDate(moment("04/15/2022").format("MM-DD-YYYY")); //date now
+        $('input[name="daterange"]')
+          .data("daterangepicker")
+          .setEndDate(moment("11/15/2022").format("MM-DD-YYYY")); //date now
+
+        $("#dt_table thead tr")
+          .clone(true)
+          .addClass("filters")
+          .appendTo("#dt_table thead");
+
+        var table = $("#dt_table").DataTable({
+          orderCellsTop: true,
+          scrollX: true,
+          // ajax: 'data/objects.json',
+          processing: true,
+          serverSide: true,
+          serverMethod: "post",
+          oLanguage: { sProcessing: "<div id='loader'></div>" },
+          // ajax: '../../datatable.php', ///Path will change here
+          ajax: {
+            url: "datatable.php",
+            data: function (d) {
+              d.datestart = datestart;
+              d.dateend = dateend;
+              window["lastpayload"] = d;
+            },
+          },
+          columns: [
+            { data: "Address" },
+            { data: "PnlUSDValue" },
+            // { data: 'PnlETHValue' },
+            { data: "PnlPercentage" },
+            { data: "AvragePnlPercentage" },
+            { data: "Balance" },
+            { data: "TxCount" },
+            { data: "TradeCount" },
+            {
+              defaultContent:
+                "<button class='u-btn' type='button' class='btn btn-light-primary'>View Trade</button>" +
+                "<button class='pnl-btn' type='button' class='btn btn-light-primary'>View PNL</button>",
+            },
+          ],
+          dom: "Blfrtip",
+          buttons: ["csv", "excel", "pdf"],
+          stateSave: true,
+          // fixedHeader: {
+          //     headerOffset: 40
+          // },
+          stateSaveParams: function (settings, data) {
+            data.search.search = "";
+            // data.search.datestart = datestart;
+            // data.search.dateend = dateend;
+            data.columns.forEach((val) => {
+              val.search.search = "";
+            });
+          },
+          columnDefs: [
+            { targets: 0, orderable: false, searching: false, width: "30%" },
+            { width: "10%", targets: 1 },
+            { width: "10%", targets: 2 },
+            { width: "10%", targets: 3 },
+            { width: "10%", targets: 4 },
+            { width: "10%", targets: 5 },
+            { width: "10%", targets: 6 },
+            { width: "10%", targets: 7, orderable: false },
+          ],
+          language: {
+            lengthMenu: "_MENU_",
+          },
+          lengthMenu: [
+            [5, 10, 25, 50, 100, 500],
+            [5, 10, 25, 50, 100, 500],
+          ],
+          pageLength: 10,
+
+          initComplete: function () {
+            var api = this.api();
+            Api = this.api();
+
+            // For each column
+            api
+              .columns()
+              .eq(0)
+              .each(function (colIdx) {
+                var cell = $(".filters th").eq(
+                  $(api.column(colIdx).header()).index()
+                );
+                var title = $(cell).text();
+
+                if (dataRange[colIdx]) {
+                  $(cell).html(`<div class="mminput">
+                                <input class="rangeinput" type="text" placeholder="${title}" />
+                                <input class="mininput" type="text" placeholder="Min" />
+                                <input class="maxinput" type="text" placeholder="Max" /></div>`);
+                } else {
+                  $(cell).html(
+                    '<input type="text" placeholder="' + title + '" />'
+                  );
+                }
+                // $('input',$('.filters th').eq($(api.column(colIdx).header()).index()))
+                //     .off('keyup change')
+                //     .on('change', function (e) {
+
+                //         $(this).attr('title', $(this).val());
+                //         var regexr = '({search})';
+                //         var cursorPosition = this.selectionStart;
+                //         api
+                //             .column(colIdx)
+                //             .search(this.value)
+                //             .draw();
+                //     })
+                //     .on('keyup', function (e) {
+                //         e.stopPropagation();
+                //     });
+              });
+          },
+        });
+
+        table.button().add(1, {
+          action: function (e, dt, button, config) {
+            var tableid = button.attr("aria-controls");
+            $.fn.dataTable.ext.search = [];
+
+            Api.columns()
+              .eq(0)
+              .each(function (colIdx) {
+                var inputVal = $(".filters th")
+                  .eq($(Api.column(colIdx).header()).index())
+                  .find("input")
+                  .val();
+                Api.column(colIdx).search(inputVal);
+              });
+            dt.draw();
+          },
+          text: "Search",
+          className: "search-btnTbl",
+        });
+
+        $("body").on("input", ".mininput", function () {
+          var maxData = $(this).closest(".mminput").find(".maxinput").val();
+          var val = $(this).val() + ",," + maxData;
+          if (val.length <= 2) {
+            val = "";
+          }
+          $(this).closest(".mminput").find(".rangeinput").val(val);
+        });
+
+        $("body").on("input", ".maxinput", function () {
+          var minData = $(this).closest(".mminput").find(".mininput").val();
+          var val = minData + ",," + $(this).val();
+          if (val.length <= 2) {
+            val = "";
+          }
+          $(this).closest(".mminput").find(".rangeinput").val(val);
+        });
+        let table112 = null;
+        let tablepnl = null;
+        var tablehtml = $("#viewTrade-Modal .modal-content").html();
+        var tablehtml_pnl = $("#viewTrade-Modal-pnl .modal-content").html();
+        $("body").on("click", ".u-btn", function () {
+          $("body").addClass("oflowhidden");
+
+          var thSearchStatus = [
+            false,
+            true,
+            true,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+          ];
+
+          if ($.fn.DataTable.isDataTable("#dt_mtable")) {
+            if (table112 != null) {
+              table112.clear().destroy();
+              $("#viewTrade-Modal .modal-content").html(tablehtml);
+              // $('#dt_mtable').dataTable().clear().destroy();
+            }
+          }
+
+          $(".viewTrade-Modal, .modal-backdrop").addClass("show");
+          var address = $(this).closest("tr").find(".txaddress").text();
+
+          $(".address11").attr(
+            "href",
+            "https://etherscan.io/address/" + address
+          );
+          $(".address11").text(address);
+
+          $("#dt_mtable thead tr")
+            .clone(true)
+            .addClass("filter")
+            .appendTo("#dt_mtable thead");
+
+          table112 = $("#dt_mtable").DataTable({
+            orderCellsTop: true,
+            serverMethod: "post",
+            scrollX: true,
+            ajax: {
+              url: "popup.php",
+              data: function (d) {
+                d.address = address;
+                d.datestart = datestart;
+                d.dateend = dateend;
+              },
+            },
+            columns: [
+              { defaultContent: address },
+              { data: "TID" },
+              { data: "FTOKEN" },
+              { data: "TOTOKEN" },
+              { data: "FAMOUNT" },
+              { data: "TOAMOUNT" },
+              { data: "FAMOUNTUsd" },
+              { data: "TOAMOUNTUsd" },
+              { data: "PNLUSD" },
+              { data: "PNLETH" },
+              { data: "TDATEID" },
+              { data: "PRICE" },
+            ],
+            // dom: 'Blfrtip',
+            //     buttons: [
+            //     'csv'
+            // ],
+            dom: "flBrtip",
+            buttons: [
+              {
+                extend: "colvis",
+                text: "Show/Hide Columns",
+              },
+              {
+                extend: "csv",
+                title: "Trade-" + address,
+              },
+            ],
+            stateSave: true,
+            stateSaveParams: function (settings, data) {
+              data.search.search = "";
+              data.columns.forEach((val) => {
+                val.search.search = "";
+              });
+            },
+            columnDefs: [
+              { targets: 0, visible: false },
+              { targets: 1, orderable: false, searching: false },
+            ],
+            language: {
+              lengthMenu: "_MENU_",
+            },
+            lengthMenu: [
+              [5, 10, 25, 50, 100, 500],
+              [5, 10, 25, 50, 100, 500],
+            ],
+            pageLength: 10,
+            initComplete: function () {
+              var api = this.api();
+              api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                  var cell = $(".filter th").eq(
+                    $(api.column(colIdx).header()).index()
+                  );
+                  var title = $(cell).text();
+
+                  if (thSearchStatus[colIdx]) {
+                    $(cell).html(
+                      '<input type="text" placeholder="' + title + '" />'
+                    );
+                  } else {
+                    $(cell).html("");
+                  }
+
+                  $(
+                    "input",
+                    $(".filter th").eq($(api.column(colIdx).header()).index())
+                  )
+                    .off("keyup change")
+                    .on("keyup change", function (e) {
+                      $(this).attr("title", $(this).val());
+                      var regexr = "({search})";
+                      var cursorPosition = this.selectionStart;
+                      api.column(colIdx).search(this.value).draw();
+                    })
+                    .on("keyup", function (e) {
+                      e.stopPropagation();
+                    });
+                });
+            },
+            drawCallback: function () {
+              var api = this.api();
+              var sum = {};
+              var formated = 0;
+
+              $(api.column(0).footer()).html("Total");
+
+              for (var i = 6; i <= 8; i++) {
+                // if (i === 7) { continue; }
+
+                if (sum[i] == undefined) sum[i] = 0;
+                const apiData = api.column(i, { page: "current" }).data();
+                console.log("apiData", apiData);
+
+                for (var j = 0; j < apiData.length; j++) {
+                  var dt = apiData[j];
+                  var dt1 = apiData[j].indexOf('="');
+                  var dt2 = apiData[j].indexOf('">');
+                  if (dt1 > -1 && dt2 > -1) {
+                    let d = dt.substring(dt1 + 2, dt2);
+                    d =
+                      d.indexOf("$") > -1
+                        ? d.substring(d.indexOf("$"), d.length)
+                        : d;
+                    if (!isNaN(d)) sum[i] += parseFloat(d);
+                  }
+                }
+
+                // formated = parseFloat(sum).toLocaleString(undefined, {minimumFractionDigits:2});
+                let total = CICS(sum[i], i);
+                dsign = "";
+                if (i !== 8) {
+                  dsign = "$";
+                }
+                $(api.column(i).footer()).html(
+                  total.indexOf("-") > -1
+                    ? "-" + dsign + total.substring(1, total.length)
+                    : dsign + total
+                );
+              }
+            },
+          });
+        });
+
+        // $('body').on('click', '.dt-button-collection .dt-button', function () {
+        //     setTimeout(() => {
+        //         $('#dt_mtable').DataTable().columns.adjust()
+        //     }, 1000)
+
+        // });
+
+        $("body").on("click", ".pnl-btn", function () {
+          var thSearchStatus = [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            false,
+          ];
+
+          if ($.fn.DataTable.isDataTable("#dt_mtable_pnl")) {
+            if (tablepnl != null) {
+              tablepnl.clear().destroy();
+              $("#viewTrade-Modal-pnl .modal-content").html(tablehtml_pnl);
+              // $('#dt_mtable_pnl').dataTable().clear().destroy();
+            }
+          }
+
+          $("body").addClass("oflowhidden");
+          $(".viewTrade-Modal-pnl").toggleClass("show");
+
+          var address = $(this).closest("tr").find(".txaddress").text();
+          $(".address11").attr(
+            "href",
+            "https://etherscan.io/address/" + address
+          );
+          $(".address11").text(address);
+
+          $("#dt_mtable_pnl thead tr")
+            .clone(true)
+            .addClass("filter1")
+            .appendTo("#dt_mtable_pnl thead");
+
+          tablepnl = $("#dt_mtable_pnl").DataTable({
+            orderCellsTop: true,
+            serverMethod: "post",
+            scrollX: true,
+            autoWidth: false,
+            ajax: {
+              url: "pnl.php",
+              data: function (d) {
+                d.address = address;
+                d.datestart = datestart;
+                d.dateend = dateend;
+              },
+            },
+            columns: [
+              { defaultContent: address },
+              { data: "Token" },
+              { data: "Bought" },
+              { data: "Sold" },
+              { data: "UnSold" },
+              { data: "RealizedPNL" },
+              { data: "UnRealizedPNL" },
+              { data: "TotalPNL" },
+              { data: "TransfersPNL" },
+              { data: "TradeCount" },
+              { data: "Status" },
+              { data: "Entry" },
+              { data: "Exit" },
+              { data: "StartDate" },
+              { data: "EndDate" },
+            ],
+            dom: "Blfrtip",
+            buttons: [
+              {
+                extend: "csv",
+                title: "PNL-" + address,
+              },
+            ],
+            stateSave: true,
+            stateSaveParams: function (settings, data) {
+              data.search.search = "";
+              data.columns.forEach((val) => {
+                val.search.search = "";
+              });
+            },
+            columnDefs: [
+              { targets: 0, visible: false },
+              { targets: 1, orderable: false, searching: false },
+            ],
+            language: {
+              lengthMenu: "_MENU_",
+            },
+            lengthMenu: [
+              [5, 10, 25, 50, 100, 500],
+              [5, 10, 25, 50, 100, 500],
+            ],
+            pageLength: 10,
+            initComplete: function () {
+              var api = this.api();
+              api
+                .columns()
+                .eq(0)
+                .each(function (colIdx) {
+                  var cell = $(".filter1 th").eq(
+                    $(api.column(colIdx).header()).index()
+                  );
+                  var title = $(cell).text();
+
+                  if (thSearchStatus[colIdx]) {
+                    $(cell).html(
+                      '<input type="text" placeholder="' + title + '" />'
+                    );
+                  } else {
+                    $(cell).html("");
+                  }
+
+                  $(
+                    "input",
+                    $(".filter1 th").eq($(api.column(colIdx).header()).index())
+                  )
+                    .off("keyup change")
+                    .on("keyup change", function (e) {
+                      $(this).attr("title", $(this).val());
+                      var regexr = "({search})";
+                      var cursorPosition = this.selectionStart;
+                      api.column(colIdx).search(this.value).draw();
+                    })
+                    .on("keyup", function (e) {
+                      e.stopPropagation();
+                    });
+                });
+
+              $("#dt_mtable_pnl_wrapper .sorting:eq(0)").trigger("click");
+            },
+            drawCallback: function () {
+              var api = this.api();
+              var sum = 0;
+              var formated = 0;
+
+              $(api.column(0).footer()).html("Total");
+
+              for (var i = 2; i <= 8; i++) {
+                // if (i === 7) { continue; }
+                let sum = api.column(i, { page: "current" }).data().sum();
+                if (isNaN(sum))
+                  sum = api
+                    .column(i, { page: "current" })
+                    .data()
+                    .map((a) => $(a).text())
+                    .sum();
+                dsign = "";
+                if (i !== 8) {
+                  dsign = "$";
+                }
+                $(api.column(i).footer()).html(
+                  dsign +
+                    parseFloat(sum).toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                    })
+                );
+              }
+            },
+          });
+        });
+      });
+
+      $("body").on("click keyup", function (e) {
+        if (e.keyCode == 27 || e.target == $(".modal.show")[0]) {
+          $(".modal.show").removeClass("show");
+          $("body").removeClass("oflowhidden");
+        }
+      });
+
+      function CICS(labelValue, i) {
+        // Nine Zeroes for Billions
+        if (i == 5)
+          console.log(
+            "function ",
+            Number(labelValue),
+            (Number(labelValue) / 1.0e3).toFixed(2)
+          );
+
+        if (Number(labelValue) >= 1e12) {
+          return (Number(labelValue) / 1e12).toFixed(2) + "<strong>T</strong>";
+        }
+        return Number(labelValue) >= 1.0e9
+          ? (Number(labelValue) / 1.0e9).toFixed(2) + "<strong>B</strong>"
+          : // Six Zeroes for Millions
+          Number(labelValue) >= 1.0e6
+          ? (Number(labelValue) / 1.0e6).toFixed(2) + "<strong>M</strong>"
+          : // Three Zeroes for Thousands
+          Number(labelValue) >= 1.0e3
+          ? (Number(labelValue) / 1.0e3).toFixed(2) + "<strong>K</strong>"
+          : Number(labelValue).toFixed(2);
+      }
+
+      $("body").on("click", ".viewTrade-Modal .cross-svg", function () {
+        $("body").removeClass("oflowhidden");
+        $(".viewTrade-Modal, .modal-backdrop").removeClass("show");
+      });
+      $("body").on("click", ".viewTrade-Modal-pnl .cross-svg", function () {
+        $("body").removeClass("oflowhidden");
+        $(".viewTrade-Modal-pnl").removeClass("show");
+      });
+
+      var hostUrl = window.location.protocol + "//" + window.location.hostname;
+      $("#export-all").on("click", function () {
+        window.open(
+          hostUrl +
+            "/data1/datatable.php?exportcsv=1&data=" +
+            encodeURIComponent(JSON.stringify(window.lastpayload))
+        );
+      });
+      $("#pnl-by-token").on("click", function () {
+        const inputval = $("#pnl-input-address").val();
+        window.open(hostUrl + "/data1/pnlbytoken1.php?address=" + inputval);
+      });
+      // $(document).ready(function () {
+
+      //     $('#example .filters th').each(function () {
+      //         var title = $(this).text();
+      //         $(this).html('<input type="text" placeholder="Search ' + title + '" />');
+      //     });
+
+      //     var table = $('#example').DataTable({
+      //         ajax: 'data/objects.json',
+      //         columns: [
+      //             { data: 'name' },
+      //             { data: 'position' },
+      //             { data: 'office' },
+      //             { data: 'extn' },
+      //             { data: 'start_date' },
+      //             { data: 'salary' },
+      //         ],
+      //         dom: 'Bfrtip',
+      //             buttons: [
+      //             'csv', 'excel', 'pdf'
+      //         ],
+      //         initComplete: function () {
+      //             // Apply the search
+      //             this.api()
+      //                 .columns()
+      //                 .every(function () {
+      //                     var that = this;
+
+      //                     $('input', this.footer()).on('keyup change clear', function () {
+      //                         if (that.search() !== this.value) {
+      //                             that.search(this.value).draw();
+      //                         }
+      //                     });
+      //                 });
+      //         },
+      //     });
+      // });
+      function copyToClipboard(text) {
+        if (window.clipboardData && window.clipboardData.setData) {
+          // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+          return window.clipboardData.setData("Text", text);
+        } else if (
+          document.queryCommandSupported &&
+          document.queryCommandSupported("copy")
+        ) {
+          var textarea = document.createElement("textarea");
+          textarea.textContent = text;
+          textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+          } catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return prompt("Copy to clipboard: Ctrl+C, Enter", text);
+          } finally {
+            document.body.removeChild(textarea);
+          }
+        }
+      }
+    </script>
+    <script></script>
+  </body>
+</html>
+
+
