@@ -15,9 +15,15 @@ table.dataTable tfoot th {
   border: 1px solid #222222 !important;
 
   padding: 6px 14px !important;
+  /* drop-shadow(5px 5px 19px red) */
+}
+.actionsIcons:hover {
+ background-color: #222222 !important;
+
 }
 .actionsIcons img {
   height: 13px !important;
+  
 }
 .eatherIcon {
   border-top-left-radius: 5px;
@@ -84,4 +90,24 @@ table.dataTable thead th {
 
 .table-condensed thead tr {
     background-color: white !important;
+}
+tfoot {
+  background-color: #222222 !important;
+  padding: 4px 10px !important;
+}
+tfoot tr th:first-child {
+border-top-left-radius:10px !important ;
+border-bottom-left-radius:10px !important ;
+}
+tfoot tr th:last-child {
+border-top-right-radius:10px !important ;
+border-bottom-right-radius:10px !important ;
+}
+.top_buttons{
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #e0e0e0;
+  font-size: 20px;
 }

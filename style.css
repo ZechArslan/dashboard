@@ -43,12 +43,10 @@ body {
 
 .dataTable th {
   font-weight: 500;
-
 }
 table.dataTable thead th,
 table.dataTable tfoot th {
   font-weight: 500;
-  
 }
 .dt_mtable_wrapper table.dataTable thead th,
 .dt_mtable_wrapper table.dataTable tfoot th {
@@ -67,7 +65,6 @@ table.dataTable.order-column.stripe > tbody > tr.odd > .sorting_1,
 table.dataTable.display > tbody > tr.even > .sorting_1,
 table.dataTable.order-column.stripe > tbody > tr.even > .sorting_1 {
   box-shadow: none;
-  
 }
 .dataTable {
   font-size: 14px;
@@ -116,9 +113,7 @@ table.dataTable.hover > tbody > tr:hover > *,
 table.dataTable.display > tbody > tr:hover > * {
   box-shadow: none;
 }
-table.dataTable tbody tr {
-  cursor: pointer;
-}
+
 table.dataTable tbody tr:nth-child(odd) {
   /* background-color: #e4f1ff4a; */
 }
@@ -132,13 +127,13 @@ table.dataTable tfoot th input {
   padding: 0px 10px;
   border-radius: 6px;
   min-width: auto;
+  color: #bbbbbb !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-  background: transparent ;
+  background: transparent;
   color: white !important;
   border: 1px solid rgb(243 241 241);
   cursor: pointer;
- 
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
   background-color: #222222 !important;
@@ -155,14 +150,19 @@ table.dataTable tfoot th input {
   border-radius: 6px;
   width: 100%;
   background-color: transparent;
-  color: white; 
+  color: white;
   font-family: "Poppins";
+}
+.dataTable thead .filters th input:focus {
+  box-shadow: 0 0 5px #222222;
+  outline: none;
 }
 .dataTables_wrapper .dataTables_paginate {
   padding-top: 23px;
 }
 .dataTables_wrapper .dataTables_info {
   padding-top: 25px;
+  color: #e0e0e0 !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
@@ -170,16 +170,17 @@ table.dataTable tfoot th input {
   border: 1px solid rgb(243 241 241);
 }
 .dataTables_filter {
-  
 }
 .dataTables_filter label img {
-    margin-left: 10px;
-  }
-.dataTables_filter label{
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
+  margin-left: 10px;
+  width: 16px;
+  height: 16px;
+}
+.dataTables_filter label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 div.dt-buttons {
   float: right;
   display: flex;
@@ -231,7 +232,6 @@ button.dt-button:hover {
   display: inline-block;
 }
 .date-range {
-    
 }
 .date-range input {
   background: transparent;
@@ -325,7 +325,6 @@ button.dt-button:hover {
   border: 1px solid #222222;
   border-radius: 12px;
   padding: 20px 35px;
-
   outline: 0;
   color: white;
 }
@@ -340,6 +339,7 @@ button.dt-button:hover {
 .modal.show {
   display: block !important;
   background: #1b191963;
+  filter: drop-shadow(5px 5px 19px #454444) !important;
 }
 
 .address11 {
@@ -525,8 +525,7 @@ div.dt-button-collection {
   margin-top: 3px;
   margin-bottom: 3px;
   padding: 4px 4px 2px 4px;
- 
-  
+
   overflow: hidden;
   z-index: 2002;
   border-radius: 5px;
@@ -577,7 +576,6 @@ div.dt-button-collection button.dt-button {
   border: none !important;
   background-color: #111111 !important;
   color: #e0e0e0 !important;
-  
 }
 .viewTrade-Modal div.dt-button-collection button.dt-button:hover {
   background-color: #111111 !important;
@@ -587,4 +585,120 @@ div.dt-button-collection button.dt-button {
 div.dt-button-background {
   background-color: none !important;
   background: none !important;
+}
+.filter1 input:focus {
+  box-shadow: 0 0 5px #222222;
+}
+
+.ellipsis {
+  color: #e0e0e0 !important;
+}
+.filter input:focus {
+  box-shadow: 0 0 5px #222222 !important;
+}
+.daterangepicker .ranges,
+.daterangepicker {
+  background-color: #111111 !important;
+  color: rgb(230, 226, 226);
+  border: 0px !important;
+  border-radius: 5px !important;
+  min-width: 550px !important;
+  max-width: 550px !important;
+  border: 1px solid #222222 !important;
+  filter: drop-shadow(1px 1px 1px #454444) !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .left {
+  /* background-color: green !important; */
+  width: 50% !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .right {
+  /* background-color:black !important; */
+  width: 50% !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .calendar-table {
+  background-color: transparent;
+  border: 0px !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .left .calendar-table .table-condensed thead tr {
+  background-color: transparent !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .left .calendar-table .table-condensed tbody tr .disabled {
+  background-color: transparent !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .left .calendar-table .table-condensed tbody tr .off {
+  background-color: transparent !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .left .calendar-table .table-condensed tbody tr .available {
+  background-color: transparent;
+  color: rgb(230, 226, 226);
+ 
+}
+.daterangepicker .ranges,
+.daterangepicker .left .calendar-table .table-condensed tbody tr .active {
+  background-color: #494646 !important;
+  color: rgb(230, 226, 226);
+  
+}
+.daterangepicker .ranges,
+.daterangepicker .left .calendar-table .table-condensed tbody tr .in-range {
+  background-color: #222222;
+}
+
+.daterangepicker .ranges,
+.daterangepicker .right .calendar-table .table-condensed thead tr {
+  background-color: transparent !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .right .calendar-table .table-condensed tbody tr .disabled {
+  background-color: transparent !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .right .calendar-table .table-condensed tbody tr .off {
+  background-color: transparent !important;
+}
+.daterangepicker .ranges,
+.daterangepicker .right .calendar-table .table-condensed tbody tr .available {
+  background-color: transparent;
+  color: rgb(230, 226, 226);
+
+}
+.daterangepicker .ranges,
+.daterangepicker .right .calendar-table .table-condensed tbody tr .active {
+  background-color: #494646 !important;
+  color: rgb(230, 226, 226);
+ 
+}
+.daterangepicker .ranges,
+.daterangepicker .right .calendar-table .table-condensed tbody tr .in-range {
+  background-color: #222222;
+}
+.drp-buttons {
+  border-top: 1px solid #222222 !important;
+}
+
+.daterangepicker .ranges,
+.daterangepicker .drp-selected {
+  color: #e0e0e0 !important;
+}
+.daterangepicker .drp-buttons button {
+  padding: 0.5rem 1rem !important;
+  color: white;
+  background-color: transparent;
+  border: 1px solid #222222;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.daterangepicker .calendar-table .next span,
+.daterangepicker .calendar-table .prev span {
+  border-color: white;
+}
+.daterangepicker td.available:hover, .daterangepicker th.available:hover{
+  background-color: #494646 !important;
 }

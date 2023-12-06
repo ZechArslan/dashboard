@@ -139,8 +139,9 @@ table.dataTable tfoot th input {
   font-size: 12px;
   border-radius: 3px;
   width: 100%;
- 
+
 }
+
 .dataTables_wrapper .dataTables_paginate {
   padding-top: 23px;
 }

@@ -8,71 +8,72 @@
     <link rel="stylesheet" href="daterangepicker.css" />
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
     <link rel="stylesheet" href="datatables.min.css" />
-    <link rel="stylesheet" href="style.css?v=222" />
-    <link rel="stylesheet" href="Styles-c.css" />
+    <link rel="stylesheet" href="style.css?v=223343" />
+    <link rel="stylesheet" href="Styles-c.css?v=1">
     <style>
-      div#viewTrade-Modal-pnl div.dt-buttons,
-      div#viewTrade-Modal div.dt-buttons {
-        padding-right: 0;
-      }
+        div#viewTrade-Modal-pnl div.dt-buttons,
+        div#viewTrade-Modal div.dt-buttons {
+            padding-right: 0;
+        }
 
-      /* #111111 */
-      .statsinfo {
-        font-size: 14px;
-        color: white;
-        display: flex;
-        gap: 30px;
-      }
+        /* #111111 */
+        .statsinfo {
+            font-size: 14px;
+            color: white;
+            display: flex;
+            gap: 30px;
+        }
 
-      .statsinfo span {
-        display: inline-block;
-      }
+        .statsinfo span {
+            display: inline-block;
+        }
 
-      .statsinfo .dot {
-        min-width: 6px;
-        min-height: 6px;
-        background-color: rgb(224, 224, 224);
-        border-radius: 100%;
-      }
+        .statsinfo .dot {
+            min-width: 6px;
+            min-height: 6px;
+            background-color: rgb(224, 224, 224);
+            border-radius: 100%;
+        }
 
-      .sBlockCont {
-        display: flex;
-        align-items: center;
-      }
+        .sBlockCont {
+            display: flex;
+            align-items: center;
+        }
 
-      div#viewTrade-Modal .dataTables_wrapper .dataTables_filter {
-        display: flex !important;
-        margin-left: 10px;
-        font-size: 14px;
-        font-family: "Poppins";
-        display: flex;
-        align-items: center;
-        background-color: #222222;
-        height: 40px;
-        border-radius: 6px;
-        color: white;
-        border: 1px solid white;
-        opacity: 0.2;
-        transition: opacity 0.3s ease-in-out;
-      }
+        div#viewTrade-Modal .dataTables_wrapper .dataTables_filter {
+            display: flex !important;
+            margin-left: 10px;
+            font-size: 14px;
+            font-family: "Poppins";
+            display: flex;
+            align-items: center;
+            background-color: #222222;
+            height: 40px;
+            border-radius: 6px;
+            color: white;
+            border: 1px solid white;
+            opacity: 0.2;
+            transition: opacity 0.3s ease-in-out;
+        }
 
-      div#viewTrade-Modal .dataTables_wrapper .dataTables_filter:hover {
-        opacity: 0.8;
-      }
+        div#viewTrade-Modal .dataTables_wrapper .dataTables_filter:hover {
+            opacity: 0.8;
+        }
 
-      div#viewTrade-Modal .dataTables_wrapper .dataTables_filter input {
-        border: none;
-        color: white;
+        div#viewTrade-Modal .dataTables_wrapper .dataTables_filter input {
+            border: none;
+            color: white;
 
-        height: 40px;
-      }
+            height: 40px;
+        }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <span id="${id}" class="homeTableAddress"></span>
+      <span id="${id}" class="homeTableAddress" ></span>
       <div class="top_buttons">
+       <span>PNL Dashboard</span>
         <button id="export-all" class="dt-button download-btn">
           <img src="./arrow.png" width="17" height="17" alt="D" />
           <span> Export All </span>
@@ -105,7 +106,7 @@
           <span class="sBlockCont">
             <span class="dot"></span>
             <span>Ending Block:</span>
-            <b id="sblock">0</b>
+            <b id="eblock">0</b>
           </span>
         </div>
         <div class="date-range">
@@ -114,26 +115,26 @@
 
         <table id="dt_table" class="display" style="width: 100%">
           <thead>
-            <tr>
+            <tr >
               <th class="trDataClss">Address</th>
               <th>Total P&L</th>
               <th>Realized Pnl</th>
               <th>UnRealized Pnl</th>
               <th>TxCount</th>
-              <th>Transfer Value</th>
-              <!-- <th>Action</th> -->
+              <!-- <th>Transfer Value</th> -->
+              <th>Action</th>
             </tr>
           </thead>
 
           <tfoot>
-            <tr>
+            <tr >
               <th>Address</th>
               <th>Total P&L</th>
               <th>Realized Pnl</th>
               <th>UnRealized Pnl</th>
               <th>TxCount</th>
-              <th>Transfer Value</th>
-              <!-- <th>Action</th> -->
+              <!-- <th>Transfer Value</th> -->
+              <th>Action</th>
             </tr>
           </tfoot>
         </table>
@@ -166,338 +167,6 @@
                 <th>Price</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="odd">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0x5de9dd7a98af0402ca6e5b7e92f45417c527b98f5d4bd18cae35546ddb85981d"
-                    ><span class="dthidden"
-                      >0x5de9dd7a98af0402ca6e5b7e92f45417c527b98f5d4bd18cae35546ddb85981d</span
-                    >0x5de...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0x44abe15f1a4a254404a09a58a371bd9533ccfa8f"
-                    >Dogecoin(DOGE)</a
-                  >
-                </td>
-                <td>0.02</td>
-                <td>93.19 <strong>M</strong></td>
-                <td>$31.60</td>
-                <td>$3.40</td>
-                <td>-$28.20</td>
-                <td>-0.01</td>
-                <td>2023-08-28 09:33:59+02</td>
-                <td>$9.30</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0x18593f172f9baff304a5356d3c65329f4eecd70a4d060dbaeb8b531049c3a47b"
-                    ><span class="dthidden"
-                      >0x18593f172f9baff304a5356d3c65329f4eecd70a4d060dbaeb8b531049c3a47b</span
-                    >0x185...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0x26c8afbbfe1ebaca03c2bb082e69d0476bffe099"
-                    >Cellframe Token(CELL)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>1,287.53</td>
-                <td>0.15</td>
-                <td>$245.93</td>
-                <td>$297.90</td>
-                <td>$51.97</td>
-                <td>0.03</td>
-                <td>2023-08-28 18:00:47+02</td>
-                <td>$0.83</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0x12e81d24aa44e218a437efbca7dc791cb6d140e18d892969aa5b3e025ffc221a"
-                    ><span class="dthidden"
-                      >0x12e81d24aa44e218a437efbca7dc791cb6d140e18d892969aa5b3e025ffc221a</span
-                    >0x12e...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0x26c8afbbfe1ebaca03c2bb082e69d0476bffe099"
-                    >Cellframe Token(CELL)</a
-                  >
-                </td>
-                <td>0.14</td>
-                <td>1,287.53</td>
-                <td>$289.64</td>
-                <td>$245.93</td>
-                <td>-$43.71</td>
-                <td>-0.02</td>
-                <td>2023-08-28 18:00:47+02</td>
-                <td>$1.18</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0x71bab685a5b10c6da223fd431990d945d593e9645249249b9d9564d24b39a804"
-                    ><span class="dthidden"
-                      >0x71bab685a5b10c6da223fd431990d945d593e9645249249b9d9564d24b39a804</span
-                    >0x71b...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xb90b2a35c65dbc466b04240097ca756ad2005295"
-                    >BOBO(BOBO)</a
-                  >
-                </td>
-                <td>0.12</td>
-                <td>5.73 <strong>B</strong></td>
-                <td>$242.22</td>
-                <td>$211.21</td>
-                <td>-$31.01</td>
-                <td>-0.02</td>
-                <td>2023-08-28 18:42:23+02</td>
-                <td>$1.15</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0x4cab69ff208010475c84bb96af1602c20c9f78966973a6178235a260279a9bf0"
-                    ><span class="dthidden"
-                      >0x4cab69ff208010475c84bb96af1602c20c9f78966973a6178235a260279a9bf0</span
-                    >0x4ca...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xb90b2a35c65dbc466b04240097ca756ad2005295"
-                    >BOBO(BOBO)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>5.73 <strong>B</strong></td>
-                <td>0.12</td>
-                <td>$211.21</td>
-                <td>$244.48</td>
-                <td>$33.27</td>
-                <td>0.02</td>
-                <td>2023-08-28 18:42:23+02</td>
-                <td>$0.86</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0x84ef5d5f72ddedc121e3f317949056fac25357a4acc36be3bc11818996f9b045"
-                    ><span class="dthidden"
-                      >0x84ef5d5f72ddedc121e3f317949056fac25357a4acc36be3bc11818996f9b045</span
-                    >0x84e...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0x26c8afbbfe1ebaca03c2bb082e69d0476bffe099"
-                    >Cellframe Token(CELL)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>1,284.72</td>
-                <td>0.14</td>
-                <td>$245.40</td>
-                <td>$285.24</td>
-                <td>$39.84</td>
-                <td>0.02</td>
-                <td>2023-08-28 20:09:47+02</td>
-                <td>$0.86</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0xb92e9666b103188f3ade83ec934d57eb396d921ae92bff40c8fd7b3fc3399ff0"
-                    ><span class="dthidden"
-                      >0xb92e9666b103188f3ade83ec934d57eb396d921ae92bff40c8fd7b3fc3399ff0</span
-                    >0xb92...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0x26c8afbbfe1ebaca03c2bb082e69d0476bffe099"
-                    >Cellframe Token(CELL)</a
-                  >
-                </td>
-                <td>0.14</td>
-                <td>1,284.72</td>
-                <td>$280.09</td>
-                <td>$245.40</td>
-                <td>-$34.69</td>
-                <td>-0.02</td>
-                <td>2023-08-28 20:09:47+02</td>
-                <td>$1.14</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0xd5112b3a02f531729982c96e16000538f15d8f6aa04db63a5c9286106dc6882f"
-                    ><span class="dthidden"
-                      >0xd5112b3a02f531729982c96e16000538f15d8f6aa04db63a5c9286106dc6882f</span
-                    >0xd51...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xa0117792d4b100fd329b37e8ab4181df8a5b3326"
-                    >BREPE(BREPE)</a
-                  >
-                </td>
-                <td>0.02</td>
-                <td>126.54 <strong>B</strong></td>
-                <td>$48.88</td>
-                <td>$3.45</td>
-                <td>-$45.43</td>
-                <td>-0.02</td>
-                <td>2023-08-28 20:53:23+02</td>
-                <td>$14.18</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0x89641b5fae9bafd00066f07be827c4ab349c3960ae59d5f6077d429d0669c4f1"
-                    ><span class="dthidden"
-                      >0x89641b5fae9bafd00066f07be827c4ab349c3960ae59d5f6077d429d0669c4f1</span
-                    >0x896...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xa0117792d4b100fd329b37e8ab4181df8a5b3326"
-                    >BREPE(BREPE)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>126.54 <strong>B</strong></td>
-                <td>0.02</td>
-                <td>$3.45</td>
-                <td>$49.52</td>
-                <td>$46.08</td>
-                <td>0.02</td>
-                <td>2023-08-28 20:53:23+02</td>
-                <td>$0.07</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/tx/0xea8a63cd1cb9c75b76430fb0834052d2f433c5d28d94e2ba6b5b6f3bc0a1e366"
-                    ><span class="dthidden"
-                      >0xea8a63cd1cb9c75b76430fb0834052d2f433c5d28d94e2ba6b5b6f3bc0a1e366</span
-                    >0xea8...</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
-                    >Ethereum(ETH)</a
-                  >
-                </td>
-                <td>
-                  <a
-                    target="_blank"
-                    href="https://etherscan.io/address/0xb8533b829541a24eececdb0206da98852f58df3e"
-                    >Shiba Inu(SHIB)</a
-                  >
-                </td>
-                <td>0.21</td>
-                <td>1.09 <strong>M</strong></td>
-                <td>$431.29</td>
-                <td>$17.22</td>
-                <td>-$414.06</td>
-                <td>-0.20</td>
-                <td>2023-08-29 11:19:35+02</td>
-                <td>$25.04</td>
-              </tr>
-            </tbody>
             <tfoot>
               <tr>
                 <th>Address</th>
@@ -520,10 +189,7 @@
     </div>
     <!-- modal 1 -->
     <!-- modal 2 -->
-    <div
-      id="viewTrade-Modal-pnl"
-      class="modal modal-summary viewTrade-Modal-pnl"
-    >
+    <div id="viewTrade-Modal-pnl" class="modal modal-summary viewTrade-Modal-pnl">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="title-head">
@@ -543,7 +209,7 @@
                 <th>Realized P&L</th>
                 <th>UnRealized P&L</th>
                 <th>Total P&L</th>
-                <th>Transfer Value</th>
+                <!-- <th>Transfer Value</th> -->
                 <th>TradeCount</th>
                 <th>Status</th>
                 <th>Entry Price</th>
@@ -552,358 +218,7 @@
                 <th>Exit Date</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="odd">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0x8cb3bf9ebf832c4cbd4ec4e7aab7dea4f45c3afd"
-                    ><span class="dthidden"
-                      >0x8cb3bf9ebf832c4cbd4ec4e7aab7dea4f45c3afd</span
-                    >\u15eaO\u1587K Killer (KENOBI)</a
-                  >
-                </td>
-                <td class="sorting_1">$598.74</td>
-                <td>$605.88</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$7.14</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$7.14</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$84.42748181</td>
-                <td>$85.43475792</td>
-                <td>2023-09-06 11:26:11+02</td>
-                <td>2023-09-06 11:26:11+02</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0x26c8afbbfe1ebaca03c2bb082e69d0476bffe099"
-                    ><span class="dthidden"
-                      >0x26c8afbbfe1ebaca03c2bb082e69d0476bffe099</span
-                    >Cellframe Token (CELL)</a
-                  >
-                </td>
-                <td class="sorting_1">$569.73</td>
-                <td>$583.14</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$13.41</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$13.41</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>4</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$1.15956323</td>
-                <td>$1.18685988</td>
-                <td>2023-08-28 18:00:47+02</td>
-                <td>2023-08-28 20:09:47+02</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0xbe042e9d09cb588331ff911c2b46fd833a3e5bd6"
-                    ><span class="dthidden"
-                      >0xbe042e9d09cb588331ff911c2b46fd833a3e5bd6</span
-                    >Pepe (PEPE)</a
-                  >
-                </td>
-                <td class="sorting_1">$515.64</td>
-                <td>$520.89</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$5.24</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$5.24</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$3.49880565</td>
-                <td>$3.53437380</td>
-                <td>2023-09-03 22:02:47+02</td>
-                <td>2023-09-03 22:02:47+02</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0xb8533b829541a24eececdb0206da98852f58df3e"
-                    ><span class="dthidden"
-                      >0xb8533b829541a24eececdb0206da98852f58df3e</span
-                    >Shiba Inu (SHIB)</a
-                  >
-                </td>
-                <td class="sorting_1">$431.29</td>
-                <td>$439.67</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$8.38</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$8.38</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$25.04116737</td>
-                <td>$25.52790160</td>
-                <td>2023-08-29 11:19:35+02</td>
-                <td>2023-08-29 11:19:35+02</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0xd7780af89a01598f09fe636f3794e81e12befe16"
-                    ><span class="dthidden"
-                      >0xd7780af89a01598f09fe636f3794e81e12befe16</span
-                    >DANKEST COIN (DANK)</a
-                  >
-                </td>
-                <td class="sorting_1">$262.15</td>
-                <td>$266.88</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$4.73</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$4.73</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$15.80756709</td>
-                <td>$16.09284517</td>
-                <td>2023-09-05 04:05:35+02</td>
-                <td>2023-09-05 04:05:35+02</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0xb90b2a35c65dbc466b04240097ca756ad2005295"
-                    ><span class="dthidden"
-                      >0xb90b2a35c65dbc466b04240097ca756ad2005295</span
-                    >BOBO (BOBO)</a
-                  >
-                </td>
-                <td class="sorting_1">$242.22</td>
-                <td>$244.48</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$2.26</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$2.26</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$1.14681232</td>
-                <td>$1.15753537</td>
-                <td>2023-08-28 18:42:23+02</td>
-                <td>2023-08-28 18:42:23+02</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0x87197f1fdb37b799de1343c38cbf3fe9b3958afa"
-                    ><span class="dthidden"
-                      >0x87197f1fdb37b799de1343c38cbf3fe9b3958afa</span
-                    >UNIFROG (UNIFROG)</a
-                  >
-                </td>
-                <td class="sorting_1">$237.1</td>
-                <td>$252.4</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$15.3</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$15.3</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$2.81957836</td>
-                <td>$3.00156338</td>
-                <td>2023-09-05 18:10:35+02</td>
-                <td>2023-09-05 18:10:35+02</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0xb5ea574dd8f2b735424dfc8c4e16760fc44a931b"
-                    ><span class="dthidden"
-                      >0xb5ea574dd8f2b735424dfc8c4e16760fc44a931b</span
-                    >HarryPotterObamaSatoshi1Meme (BTC)</a
-                  >
-                </td>
-                <td class="sorting_1">$161</td>
-                <td>$167.3</td>
-                <td>$0</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$6.3</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$6.3</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #f44336; font-weight: bold">Closed</span>
-                </td>
-                <td>$122.52194773</td>
-                <td>$127.31522904</td>
-                <td>2023-09-02 12:54:11+02</td>
-                <td>2023-09-02 12:54:11+02</td>
-              </tr>
-              <tr class="odd">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0x6b175474e89094c44da98b954eedeac495271d0f"
-                    ><span class="dthidden"
-                      >0x6b175474e89094c44da98b954eedeac495271d0f</span
-                    >Dai Stablecoin (DAI)</a
-                  >
-                </td>
-                <td class="sorting_1">$117.45</td>
-                <td>$123.15</td>
-                <td>$5.7</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$11.13</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0.54</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$5.7</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>8</td>
-                <td>
-                  <span style="color: #4caf50; font-weight: bold">Open</span>
-                </td>
-                <td>$0.95372116</td>
-                <td>$1.04852450</td>
-                <td>2023-10-09 15:59:47+02</td>
-                <td>2023-10-24 08:01:11+02</td>
-              </tr>
-              <tr class="even">
-                <td>
-                  <a
-                    href="https://etherscan.io/token/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599"
-                    ><span class="dthidden"
-                      >0x2260fac5e5542a773aa44fbcfedf7c193bc2c599</span
-                    >Wrapped BTC (WBTC)</a
-                  >
-                </td>
-                <td class="sorting_1">$101.9</td>
-                <td>$104.93</td>
-                <td>$3.03</td>
-                <td>
-                  <span title="Realized PNL Based on Trade activity only"
-                    >$5.97</span
-                  >
-                </td>
-                <td>
-                  <span title="UnRealized PNL Based on Trade activity only"
-                    >$0.18</span
-                  >
-                </td>
-                <td>
-                  <p title="$0">$3.03</p>
-                </td>
-                <td><span title="Transfer PNL: $0">$0</span></td>
-                <td>2</td>
-                <td>
-                  <span style="color: #4caf50; font-weight: bold">Open</span>
-                </td>
-                <td>$0.97112553</td>
-                <td>$1.02973299</td>
-                <td>2023-10-11 02:14:59+02</td>
-                <td>2023-10-11 02:14:59+02</td>
-              </tr>
-            </tbody>
+
             <tfoot>
               <tr>
                 <th>Address</th>
@@ -914,7 +229,7 @@
                 <th>Realized P&L</th>
                 <th>UnRealized P&L</th>
                 <th>Total P&L</th>
-                <th>Transfer Value</th>
+                <!-- <th>Transfer Value</th> -->
                 <th>TradeCount</th>
                 <th>Status</th>
                 <th>Entry Price</th>
@@ -942,7 +257,7 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script> -->
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script> -->
 
     <script>
       $(document).ready(function () {
@@ -953,14 +268,14 @@
             blocks: true,
           },
           function (data, status) {
-            data = JSON.parse(data);
-            console.log(data);
+            // data = JSON.parse(data);
+            // console.log(data,);
             $("#sblock").html(data[0]);
             $("#eblock").html(data[1]);
             // alert("Data: " + data + "\nStatus: " + status);
           }
         );
-        var dataRange = [false, true, true, true, true, true, false];
+        var dataRange = [false, true, true, true, true,  false];
         var Api;
         var datestart = "";
         var dateend = "";
@@ -1064,35 +379,35 @@
             { data: "RealizedPNL" },
             { data: "UnRealizedPNL" },
             { data: "TxCount" },
-            { data: "TransferAmount" },
+            // { data: "TransferAmount" },
             {
               data: "Address",
               render: function (e) {
                 return `
                 <div class="eatherIconcontainer">
-  <abbr title="link:0x89s">
-    <div
-      class="eatherIcon actionsIcons tradeAddressTab"
-      id="${e}"
-      width="20px"
-      height="20px"
-      type="button"
-      onclick="viewEather(${e})"
-    >
-      <img src="./ethereum.svg" alt="" />
-    </div>
-  </abbr>
-  <abbr title="View Trade">
-    <div class="eyesIcons actionsIcons u-btn"  type="button">
-      <img src="./view.png" alt="" />
-    </div>
-  </abbr>
-  <abbr title="View PNL">
-    <div class="statisIcon actionsIcons earthIcon pnl-btn" width="20px" height="20px" type="button">
-      <img src="./stats.svg" alt="" />
-    </div>
-  </abbr>
-</div> `;
+                    <abbr title="link:0x89s">
+                        <div
+                        class="eatherIcon actionsIcons tradeAddressTab"
+                        id="${e}"
+                        width="20px"
+                        height="20px"
+                        type="button"
+                        onclick="viewEather(${e})"
+                        >
+                        <img src="./ethereum.svg" alt="" />
+                        </div>
+                    </abbr>
+                    <abbr title="View Trade">
+                        <div class="eyesIcons actionsIcons u-btn"  type="button">
+                        <img src="./view.png" alt="" />
+                        </div>
+                    </abbr>
+                    <abbr title="View PNL">
+                        <div class="statisIcon actionsIcons earthIcon pnl-btn" width="20px" height="20px" type="button">
+                        <img src="./stats.svg" alt="" />
+                        </div>
+                    </abbr>
+                </div> `;
               },
             },
           ],
@@ -1116,8 +431,8 @@
             { width: "10%", targets: 2 },
             { width: "10%", targets: 3 },
             { width: "10%", targets: 4 },
-            { width: "10%", targets: 5 },
-            { width: "10%", targets: 6, orderable: false },
+            // { width: "10%", targets: 5 },
+            { width: "10%", targets: 5, orderable: false },
           ],
           language: {
             lengthMenu: "_MENU_",
@@ -1310,7 +625,7 @@
             ],
             language: {
               lengthMenu: "_MENU_",
-              search: `<img src="./search.svg" width="24" height="24" alt=""  /> _INPUT_`,
+              search: `<img src="./search.png" width="24" height="24" alt=""  /> _INPUT_`,
               // searchPlaceholder: "Search..."
             },
 
@@ -1366,7 +681,7 @@
 
                 if (sum[i] == undefined) sum[i] = 0;
                 const apiData = api.column(i, { page: "current" }).data();
-                console.log("apiData", apiData);
+              
 
                 for (var j = 0; j < apiData.length; j++) {
                   var dt = apiData[j];
@@ -1428,7 +743,6 @@
             false,
             false,
             false,
-            false,
             true,
             false,
             false,
@@ -1483,7 +797,7 @@
               { data: "RealizedPNL" },
               { data: "UnRealizedPNL" },
               { data: "TotalPNL" },
-              { data: "TransfersPNL" },
+              // { data: "TransfersPNL" },
               { data: "TradeCount" },
               { data: "Status" },
               { data: "Entry" },
@@ -1625,25 +939,19 @@
         $(".viewTrade-Modal-pnl").removeClass("show");
       });
 
-      // var hostUrl = window.location.protocol + "//" + window.location.hostname;
-      var hostUrl = "http://144.76.163.123";
-      console.log( hostUrl +
-            "/dashboard/datatable.php?exportcsv=1&data=", "THIS IS HOST NAME");
-    
-
+      var hostUrl = 'http://144.76.163.123/dashboard'; // = window.location.protocol + "//" + window.location.hostname;
       $("#export-all").on("click", function () {
         // window.open(hostUrl + "/data1/datatable.php?exportcsv=1&data=" + encodeURIComponent(JSON.stringify(window.lastpayload)));
-
         window.open(
-          hostUrl +
-            "/dashboard/datatable.php?exportcsv=1&data=" +
-            encodeURIComponent(JSON.stringify(window.lastpayload))
+          hostUrl + "/dashboard/datatable.php?exportcsv=1&data=" + encodeURIComponent(JSON.stringify(window.lastpayload))
         );
       });
       $("#pnl-by-token").on("click", function () {
         const inputval = $("#pnl-input-address").val();
         // window.open(hostUrl + "/data1/pnlbytoken1.php?address="+inputval);
-        window.open(hostUrl + "/dashboard/pnlbytoken1.php?address=" + inputval);
+        window.open(
+          hostUrl + "/dashboard/pnlbytoken1.php?address=" + inputval
+        );
       });
 
       function copyToClipboard(text) {
