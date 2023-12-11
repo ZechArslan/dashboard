@@ -317,6 +317,12 @@ button.dt-button:hover {
   max-width: 1600px;
   width: 100%;
 }
+.edit-modal-dialog {
+  margin: 30px auto;
+  max-width: 40%;
+  min-width: 40%;
+  width: 100%;
+}
 .modal-content {
   position: relative;
   background-color: #111111;
@@ -638,13 +644,11 @@ div.dt-button-background {
 .daterangepicker .left .calendar-table .table-condensed tbody tr .available {
   background-color: transparent;
   color: rgb(230, 226, 226);
- 
 }
 .daterangepicker .ranges,
 .daterangepicker .left .calendar-table .table-condensed tbody tr .active {
   background-color: #494646 !important;
   color: rgb(230, 226, 226);
-  
 }
 .daterangepicker .ranges,
 .daterangepicker .left .calendar-table .table-condensed tbody tr .in-range {
@@ -667,13 +671,11 @@ div.dt-button-background {
 .daterangepicker .right .calendar-table .table-condensed tbody tr .available {
   background-color: transparent;
   color: rgb(230, 226, 226);
-
 }
 .daterangepicker .ranges,
 .daterangepicker .right .calendar-table .table-condensed tbody tr .active {
   background-color: #494646 !important;
   color: rgb(230, 226, 226);
- 
 }
 .daterangepicker .ranges,
 .daterangepicker .right .calendar-table .table-condensed tbody tr .in-range {
@@ -699,6 +701,52 @@ div.dt-button-background {
 .daterangepicker .calendar-table .prev span {
   border-color: white;
 }
-.daterangepicker td.available:hover, .daterangepicker th.available:hover{
+.daterangepicker td.available:hover,
+.daterangepicker th.available:hover {
   background-color: #494646 !important;
+}
+.tag-selection-popup {
+  width: 50% !important;
+}
+/* padding: 0.5rem 1rem; */
+
+.select2-container--default .select2-selection--multiple {
+  border: 1px solid #222222 !important;
+  background-color: transparent !important;
+  color: #e0e0e0;
+  padding-bottom: 16px !important;
+}
+.select2-container--default .select2-search--inline .select2-search__field {
+  color: #e0e0e0 !important;
+}
+.addTagField{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.addTag {
+  background-color: #222222;
+  padding: 14px 15px !important;
+  color: #e0e0e0;
+  cursor: pointer; 
+  border-radius: 6px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: transparent !important;
+
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display{
+  font-size: 13px;
+  font-weight: 500 !important;
+  height: 100% !important;
+  display: flex;
+}
+
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable:hover{
+  background-color: #222222;
+  color: white;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+  border-right: 0px !important;
+  height: 100% !important;
 }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Token</title>
+    <link rel="stylesheet" href="daterangepicker.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
+    <link rel="stylesheet" href="datatables.min.css" />
+    <link rel="stylesheet" href="style.css?v=223343" />
+    <link rel="stylesheet" href="Styles-c.css?v=1" />
+    <link href="dist/css/select2.min.css" rel="stylesheet" />
+    <style>
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-selection__choice__remove:hover,
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-selection__choice__remove:focus {
+        background-color: transparent !important;
+        color: white !important;
+      }
+      .close-search-modal{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 25px !important;
+        background-color: red !important;
+      }
+      .edit-icon-div{
+        border-radius: 6px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <table id="token_table" class="display" style="width: 100%">
+        <thead>
+          <tr>
+            <th class="trDataClss">Id</th>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Address</th>
+            <th>IsMainToken</th>
+            <th>IsScamToken</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tfoot>
+          <tr>
+            <th class="trDataClss">Id</th>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Address</th>
+            <th>IsMainToken</th>
+            <th>IsScamToken</th>
+            <th>Action</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- modal -->
+    <div class="edit-trade-modal modal modal-summary" id="edit-trade-modal">
+      <div class="edit-modal-dialog">
+        <div class="modal-content">
+          <div class="close-search-modal">
+            <div class="cross-svg">
+              <span><img src="cross-coin.svg" alt="" /></span>
+            </div>
+          </div>
+          <div class="addTagField">
+            <select
+              id="mySelect"
+              class="js-example-tags"
+              multiple="multiple"
+              style="width: 80%"
+            ></select>
+            <div>
+              <button class="addTag" id="addTag">Add Tag</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="datatables.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.datatables.net/plug-ins/1.11.5/api/sum().js"
+    ></script>
+    <script type="text/javascript" src="moment.min.js"></script>
+    <script type="text/javascript" src="daterangepicker.js"></script>
+    <script src="buttons.colVis.min.js"></script>
+    <script src="dist/js/select2.min.js"></script>
+    <script src="token.js"></script>
+  </body>
+</html>

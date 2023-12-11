@@ -9,71 +9,77 @@
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
     <link rel="stylesheet" href="datatables.min.css" />
     <link rel="stylesheet" href="style.css?v=223343" />
-    <link rel="stylesheet" href="Styles-c.css?v=1">
+    <link rel="stylesheet" href="Styles-c.css?v=1" />
+    <link href="dist/css/select2.min.css" rel="stylesheet" />
+
     <style>
-        div#viewTrade-Modal-pnl div.dt-buttons,
-        div#viewTrade-Modal div.dt-buttons {
-            padding-right: 0;
-        }
+      div#viewTrade-Modal-pnl div.dt-buttons,
+      div#viewTrade-Modal div.dt-buttons {
+        padding-right: 0;
+      }
 
-        /* #111111 */
-        .statsinfo {
-            font-size: 14px;
-            color: white;
-            display: flex;
-            gap: 30px;
-        }
+      /* #111111 */
+      .statsinfo {
+        font-size: 14px;
+        color: white;
+        display: flex;
+        gap: 30px;
+      }
 
-        .statsinfo span {
-            display: inline-block;
-        }
+      .statsinfo span {
+        display: inline-block;
+      }
 
-        .statsinfo .dot {
-            min-width: 6px;
-            min-height: 6px;
-            background-color: rgb(224, 224, 224);
-            border-radius: 100%;
-        }
+      .statsinfo .dot {
+        min-width: 6px;
+        min-height: 6px;
+        background-color: rgb(224, 224, 224);
+        border-radius: 100%;
+      }
 
-        .sBlockCont {
-            display: flex;
-            align-items: center;
-        }
+      .sBlockCont {
+        display: flex;
+        align-items: center;
+      }
 
-        div#viewTrade-Modal .dataTables_wrapper .dataTables_filter {
-            display: flex !important;
-            margin-left: 10px;
-            font-size: 14px;
-            font-family: "Poppins";
-            display: flex;
-            align-items: center;
-            background-color: #222222;
-            height: 40px;
-            border-radius: 6px;
-            color: white;
-            border: 1px solid white;
-            opacity: 0.2;
-            transition: opacity 0.3s ease-in-out;
-        }
+      div#viewTrade-Modal .dataTables_wrapper .dataTables_filter {
+        display: flex !important;
+        margin-left: 10px;
+        font-size: 14px;
+        font-family: "Poppins";
+        display: flex;
+        align-items: center;
+        background-color: #222222;
+        height: 40px;
+        border-radius: 6px;
+        color: white;
+        border: 1px solid white;
+        opacity: 0.2;
+        transition: opacity 0.3s ease-in-out;
+      }
 
-        div#viewTrade-Modal .dataTables_wrapper .dataTables_filter:hover {
-            opacity: 0.8;
-        }
+      div#viewTrade-Modal .dataTables_wrapper .dataTables_filter:hover {
+        opacity: 0.8;
+      }
 
-        div#viewTrade-Modal .dataTables_wrapper .dataTables_filter input {
-            border: none;
-            color: white;
+      div#viewTrade-Modal .dataTables_wrapper .dataTables_filter input {
+        border: none;
+        color: white;
 
-            height: 40px;
-        }
+        height: 40px;
+      }
     </style>
   </head>
 
   <body>
     <div class="container">
-      <span id="${id}" class="homeTableAddress" ></span>
+      <!-- <div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word; ">
+        91208091248120948091248094218098212098049128092180492480921809820981810912480912480
+      </div> -->
+
+      <span id="${id}" class="homeTableAddress"></span>
       <div class="top_buttons">
-       <span>PNL Dashboard</span>
+        <span>P&L Dashboard</span>
         <button id="export-all" class="dt-button download-btn">
           <img src="./arrow.png" width="17" height="17" alt="D" />
           <span> Export All </span>
@@ -115,7 +121,7 @@
 
         <table id="dt_table" class="display" style="width: 100%">
           <thead>
-            <tr >
+            <tr>
               <th class="trDataClss">Address</th>
               <th>Total P&L</th>
               <th>Realized Pnl</th>
@@ -127,7 +133,7 @@
           </thead>
 
           <tfoot>
-            <tr >
+            <tr>
               <th>Address</th>
               <th>Total P&L</th>
               <th>Realized Pnl</th>
@@ -187,9 +193,11 @@
         </div>
       </div>
     </div>
-    <!-- modal 1 -->
     <!-- modal 2 -->
-    <div id="viewTrade-Modal-pnl" class="modal modal-summary viewTrade-Modal-pnl">
+    <div
+      id="viewTrade-Modal-pnl"
+      class="modal modal-summary viewTrade-Modal-pnl"
+    >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="title-head">
@@ -242,7 +250,26 @@
         </div>
       </div>
     </div>
-    <!-- modal 2 -->
+
+    <!-- Modal 3 -->
+    <div class="edit-trade-modal modal modal-summary" id="edit-trade-modal">
+      <div class="edit-modal-dialog">
+        <div class="modal-content">
+          <div class="addTagField">
+            <select
+              id="mySelect"
+              class="js-example-tags"
+              multiple="multiple"
+              style="width: 80%"
+            ></select>
+            <div>
+              <button class="addTag" id="addTag">Add Tag</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="jquery-3.6.0.min.js"></script>
     <script src="datatables.min.js"></script>
     <script
@@ -252,6 +279,7 @@
     <script type="text/javascript" src="moment.min.js"></script>
     <script type="text/javascript" src="daterangepicker.js"></script>
     <script src="buttons.colVis.min.js"></script>
+    <script src="dist/js/select2.min.js"></script>
 
     <!-- <script src="package.js"></script> -->
 
@@ -261,9 +289,8 @@
 
     <script>
       $(document).ready(function () {
-        // Setup - add a text input to each footer cell
         $.post(
-          "datatable.php",
+          "http://144.76.163.123/dashboard/datatable.php",
           {
             blocks: true,
           },
@@ -275,7 +302,7 @@
             // alert("Data: " + data + "\nStatus: " + status);
           }
         );
-        var dataRange = [false, true, true, true, true,  false];
+        var dataRange = [false, true, true, true, true, false];
         var Api;
         var datestart = "";
         var dateend = "";
@@ -368,7 +395,6 @@
             {
               data: "Address",
               render: (id) => {
-                false;
                 const formattedAddress =
                   id.substr(0, 9) + "..." + id.substr(id.length - 9);
 
@@ -403,8 +429,13 @@
                         </div>
                     </abbr>
                     <abbr title="View PNL">
-                        <div class="statisIcon actionsIcons earthIcon pnl-btn" width="20px" height="20px" type="button">
+                        <div class="eyesIcons actionsIcons earthIcon pnl-btn" width="20px" height="20px" type="button">
                         <img src="./stats.svg" alt="" />
+                        </div>
+                    </abbr>
+                    <abbr title="View PNL">
+                        <div class="statisIcon actionsIcons earthIcon edit-modal" width="20px" height="20px" type="button" id="${e}">
+                        <img src="./edit.png" alt="" />
                         </div>
                     </abbr>
                 </div> `;
@@ -412,7 +443,18 @@
             },
           ],
           dom: "Blfrtip",
-          buttons: ["csv", "excel", "pdf"],
+          buttons: [
+            {
+              extend: "csv",
+              exportOptions: {
+                columns: [0, 1, 2, 3, 4],
+              },
+              title: "CSV File",
+            },
+            "excel",
+            "pdf",
+          ],
+
           stateSave: true,
           // fixedHeader: {
           //     headerOffset: 40
@@ -525,10 +567,12 @@
           }
           $(this).closest(".mminput").find(".rangeinput").val(val);
         });
+
         let table112 = null;
         let tablepnl = null;
         var tablehtml = $("#viewTrade-Modal .modal-content").html();
         var tablehtml_pnl = $("#viewTrade-Modal-pnl .modal-content").html();
+        var editPopup_bach = $("#edit-trade-modal .modal-content").html();
         $("body").on("click", ".u-btn", function () {
           $("body").addClass("oflowhidden");
 
@@ -583,24 +627,133 @@
                 d.dateend = dateend;
               },
             },
+            // render: (id) => {
+            //     false;
+            //     const formattedAddress =
+            //       id.substr(0, 9) + "..." + id.substr(id.length - 9);
+
+            //     return `<span id="${id}" class="homeTableAddress" onclick="" >${formattedAddress}</span>`;
+            //   },
             columns: [
               { defaultContent: address },
               { data: "TID" },
-              { data: "FTOKEN" },
-              { data: "TOTOKEN" },
-              { data: "FAMOUNT" },
-              { data: "TOAMOUNT" },
-              { data: "FAMOUNTUsd" },
-              { data: "TOAMOUNTUsd" },
-              { data: "PNLUSD" },
-              { data: "PNLETH" },
-              { data: "TDATEID" },
-              { data: "PRICE" },
+              {
+                data: "FTOKEN",
+                render: function (data) {
+                  const timestamp = new Date().getTime();
+                  var range = document.createRange();
+                  var fragment = range.createContextualFragment(data);
+                  var textData = fragment.firstElementChild.innerHTML;
+                  var linkdata =
+                    fragment.firstElementChild.getAttribute("href");
+                  var filtredStrings =
+                    textData.length > 30
+                      ? textData.substring(0, 20) +
+                        "..." +
+                        textData.substring(textData.length - 1)
+                      : textData;
+                  return `<div  class="tradePopUpFields">
+                    <span class='viewMoreContent' id='${
+                      textData + "*$" + timestamp
+                    }'>${filtredStrings}</span>
+                  <a href="${linkdata}" target="_blank" class="appendImage"><img src="./open.png" alt="Image Alt Text" class="openInnewTab"/></a>
+                  </div>`;
+                },
+              },
+              {
+                data: "TOTOKEN",
+                render: function (data) {
+                  const timestamp = new Date().getTime();
+                  var range = document.createRange();
+                  var fragment = range.createContextualFragment(data);
+                  var textData = fragment.firstElementChild.innerHTML;
+                  var linkdata =
+                    fragment.firstElementChild.getAttribute("href");
+                  var filtredStrings =
+                    textData.length > 30
+                      ? textData.substring(0, 20) +
+                        "..." +
+                        textData.substring(textData.length - 1)
+                      : textData;
+                  return `<div  class="tradePopUpFields">
+                    <span class='viewMoreContent' id='${
+                      textData + "*$" + timestamp
+                    }'>${filtredStrings}</span>
+                  <a href="${linkdata}" target="_blank" class="appendImage"><img src="./open.png" alt="Image Alt Text" class="openInnewTab"/></a>
+                  </div>`;
+                },
+              },
+              {
+                data: "FAMOUNT",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;"  >
+                    ${data}
+                    </div>`;
+                },
+              },
+              {
+                data: "TOAMOUNT",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;" >
+                    ${data}
+                    </div>`;
+                },
+              },
+              {
+                data: "FAMOUNTUsd",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;" >
+                    ${data}
+                    </div>`;
+                },
+              },
+              {
+                data: "TOAMOUNTUsd",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;" >
+                    ${data}
+                    </div>`;
+                },
+              },
+              {
+                data: "PNLUSD",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;">
+                    ${data}
+                    </div>`;
+                },
+              },
+              {
+                data: "PNLETH",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;">
+                    ${data}
+                    </div>`;
+                },
+              },
+              {
+                data: "TDATEID",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;">
+                    ${data}
+                    </div>`;
+                },
+              },
+              {
+                data: "PRICE",
+                render: function (data) {
+                  return `<div style="max-width: 100px; word-wrap: break-word; overflow-wrap: break-word;">
+                    ${data}
+                    </div>`;
+                },
+              },
             ],
+
             // dom: 'Blfrtip',
             //     buttons: [
             //     'csv'
             // ],
+
             dom: "flBrtip",
             buttons: [
               {
@@ -662,6 +815,7 @@
                       $(this).attr("title", $(this).val());
                       var regexr = "({search})";
                       var cursorPosition = this.selectionStart;
+
                       api.column(colIdx).search(this.value).draw();
                     })
                     .on("keyup", function (e) {
@@ -681,24 +835,21 @@
 
                 if (sum[i] == undefined) sum[i] = 0;
                 const apiData = api.column(i, { page: "current" }).data();
-              
 
                 for (var j = 0; j < apiData.length; j++) {
                   var dt = apiData[j];
-                  var dt1 = apiData[j].indexOf('="');
-                  var dt2 = apiData[j].indexOf('">');
-                  if (dt1 > -1 && dt2 > -1) {
-                    let d = dt.substring(dt1 + 2, dt2);
-                    d =
-                      d.indexOf("$") > -1
-                        ? d.substring(d.indexOf("$"), d.length)
-                        : d;
-                    if (!isNaN(d)) sum[i] += parseFloat(d);
+                  if (dt) {
+                    dt = Number(dt.replace(/[$]/g, ""));
+                    if (!isNaN(dt)) {
+                      sum[i] += parseFloat(dt);
+                    }
                   }
                 }
 
                 // formated = parseFloat(sum).toLocaleString(undefined, {minimumFractionDigits:2});
                 let total = CICS(sum[i], i);
+                console.log(total, "THIS IS TOTAL cic.--->");
+
                 dsign = "";
                 if (i !== 8) {
                   dsign = "$";
@@ -725,6 +876,22 @@
                 e.currentTarget.id.substr(0, 9) +
                 "..." +
                 e.currentTarget.id.substr(e.currentTarget.id.length - 9));
+        });
+
+        $("#dt_mtable").on("click", ".viewMoreContent", function (e) {
+          if (e.currentTarget.innerHTML.length > 23) {
+            let strIndex = e.currentTarget.id.indexOf("*$");
+            let actutalString = e.currentTarget.id.slice(0, strIndex);
+
+            e.currentTarget.innerHTML.toString().includes("...")
+              ? (e.currentTarget.innerHTML = actutalString)
+              : (e.currentTarget.innerHTML =
+                  e.currentTarget.innerHTML.substring(0, 20) +
+                  "..." +
+                  e.currentTarget.innerHTML.substring(
+                    e.currentTarget.innerHTML.length - 1
+                  ));
+          }
         });
         // $('body').on('click', '.dt-button-collection .dt-button', function () {
         //     setTimeout(() => {
@@ -790,20 +957,85 @@
             },
             columns: [
               { defaultContent: address },
-              { data: "Token" },
-              { data: "Bought" },
-              { data: "Sold" },
-              { data: "UnSold" },
-              { data: "RealizedPNL" },
-              { data: "UnRealizedPNL" },
-              { data: "TotalPNL" },
+              {
+                data: "Token",
+                render: (data) => {
+                  return `<div class="tradePanelPopUp">${data}</div>`;
+                },
+              },
+              {
+                data: "Bought",
+                render: (data) => {
+                  return `<div class="tradePopUpFields">${data}</div>`;
+                },
+              },
+              {
+                data: "Sold",
+                render: (data) => {
+                  return `<div class="tradePopUpFields">${data}</div>`;
+                },
+              },
+              {
+                data: "UnSold",
+                render: (data) => {
+                  return `<div class="tradePopUpFields">${data}</div>`;
+                },
+              },
+              {
+                data: "RealizedPNL",
+                render: (data) => {
+                  return `<div class="tradePopUpFields">${data}</div>`;
+                },
+              },
+              {
+                data: "UnRealizedPNL",
+                render: (data) => {
+                  return `<div class="tradePopUpFields">${data}</div>`;
+                },
+              },
+              {
+                data: "TotalPNL",
+                render: (data) => {
+                  return `<div class="tradePopUpFields">${data}</div>`;
+                },
+              },
               // { data: "TransfersPNL" },
-              { data: "TradeCount" },
-              { data: "Status" },
-              { data: "Entry" },
-              { data: "Exit" },
-              { data: "StartDate" },
-              { data: "EndDate" },
+              {
+                data: "TradeCount",
+                render: (data) => {
+                  return `<div style="max-width: 60px; word-wrap: break-word; overflow-wrap: break-word;">${data}</div>`;
+                },
+              },
+              {
+                data: "Status",
+                render: (data) => {
+                  return `<div style="max-width: 60px; word-wrap: break-word; overflow-wrap: break-word;">${data}</div>`;
+                },
+              },
+              {
+                data: "Entry",
+                render: (data) => {
+                  return `<div style="max-width: 60px; word-wrap: break-word; overflow-wrap: break-word;">${data}</div>`;
+                },
+              },
+              {
+                data: "Exit",
+                render: (data) => {
+                  return `<div style="max-width: 60px; word-wrap: break-word; overflow-wrap: break-word;">${data}</div>`;
+                },
+              },
+              {
+                data: "StartDate",
+                render: (data) => {
+                  return `<div style="max-width: 60px; word-wrap: break-word; overflow-wrap: break-word;">${data}</div>`;
+                },
+              },
+              {
+                data: "EndDate",
+                render: (data) => {
+                  return `<div style="max-width: 60px; word-wrap: break-word; overflow-wrap: break-word;">${data}</div>`;
+                },
+              },
             ],
             dom: "Blfrtip",
             buttons: [
@@ -898,6 +1130,17 @@
             },
           });
         });
+
+        // This is Edit table
+
+        $("body").on("click", ".edit-modal", function () {
+          $("#edit-trade-modal .modal-content").html(editPopup_bach);
+          $("body").addClass("oflowhidden");
+          $(".edit-trade-modal").toggleClass("show");
+          $(".js-example-tags").select2({
+            tags: true,
+          });
+        });
       });
 
       $("body").on("click keyup", function (e) {
@@ -909,6 +1152,7 @@
 
       function CICS(labelValue, i) {
         // Nine Zeroes for Billions
+        console.log(labelValue, i, "labelValue----->");
         if (i == 5)
           console.log(
             "function ",
@@ -939,19 +1183,24 @@
         $(".viewTrade-Modal-pnl").removeClass("show");
       });
 
-      var hostUrl = 'http://144.76.163.123/dashboard'; // = window.location.protocol + "//" + window.location.hostname;
+      $("body").on("click", ".edit-trade-modal .cross-svg", function () {
+        $("body").removeClass("oflowhidden");
+        $(".edit-trade-modal").removeClass("show");
+      });
+
+      var hostUrl = "http://144.76.163.123/dashboard"; // = window.location.protocol + "//" + window.location.hostname;
       $("#export-all").on("click", function () {
         // window.open(hostUrl + "/data1/datatable.php?exportcsv=1&data=" + encodeURIComponent(JSON.stringify(window.lastpayload)));
         window.open(
-          hostUrl + "/dashboard/datatable.php?exportcsv=1&data=" + encodeURIComponent(JSON.stringify(window.lastpayload))
+          hostUrl +
+            "/dashboard/datatable.php?exportcsv=1&data=" +
+            encodeURIComponent(JSON.stringify(window.lastpayload))
         );
       });
       $("#pnl-by-token").on("click", function () {
         const inputval = $("#pnl-input-address").val();
         // window.open(hostUrl + "/data1/pnlbytoken1.php?address="+inputval);
-        window.open(
-          hostUrl + "/dashboard/pnlbytoken1.php?address=" + inputval
-        );
+        window.open(hostUrl + "/dashboard/pnlbytoken1.php?address=" + inputval);
       });
 
       function copyToClipboard(text) {
@@ -977,6 +1226,57 @@
           }
         }
       }
+
+      var rowAddressTags = null;
+      $("body").on("click", ".edit-modal", function (e) {
+        rowAddressTags = e.currentTarget.id;
+        $.ajax({
+          url:
+            "http://144.76.163.123/dashboard/address.php?action=get_address_tags&address_id=" +
+            rowAddressTags,
+          method: "GET",
+          dataType: "json",
+          success: function (data) {
+            var select = $("#mySelect");
+            select.empty();
+
+            data.forEach(function (option) {
+              select.append(new Option(option, option, false, false));
+            });
+
+            select.select2({
+              tags: true,
+            });
+            var allOptions = data.map(function (option) {
+              return option;
+            });
+            select.val(allOptions).trigger("change");
+          },
+          error: function (xhr, status, error) {
+            alert(error);
+          },
+        });
+      });
+
+      $("body").on("click", ".addTag", function () {
+        var selectedTags = $("#mySelect").val();
+        var jsonData = JSON.stringify(selectedTags);
+        $.ajax({
+          url:
+            "http://144.76.163.123/dashboard/address.php?action=update_address_tags&address_id=" +
+            rowAddressTags,
+          method: "POST",
+
+          data: $.param({ tags: jsonData }),
+          dataType: "json",
+          success: function (data) {
+            alert(data);
+          },
+          error: function (xhr, status, error) {
+            alert(error);
+          },
+        });
+      });
     </script>
   </body>
 </html>

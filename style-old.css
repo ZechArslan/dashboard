@@ -290,6 +290,7 @@ button.dt-button:hover {
   max-width: 1600px;
   width: 100%;
 }
+
 .modal-content {
   position: relative;
   background-color: #fff;
@@ -302,6 +303,8 @@ button.dt-button:hover {
   box-shadow: 0 5px 15px rgb(0 0 0 / 50%);
   outline: 0;
 }
+
+
 .modal-body {
   padding: 20px 0;
 }
