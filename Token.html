@@ -20,20 +20,134 @@
         background-color: transparent !important;
         color: white !important;
       }
-      .close-search-modal{
+      .close-search-modal {
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        margin-bottom: 25px !important;
+      }
+      .edit-icon-div {
+        border-radius: 6px !important;
+      }
+      .heading-tag {
+      }
+      .heading-tag img {
+        width: 15px;
+        cursor: pointer;
+      }
+      .label {
+        display: inline-block;
+        padding: 4px 5px;
+        background-color: #3498db;
+        color: #ffffff;
+        border-radius: 20px;
+        font-family: Arial, sans-serif;
+        margin-right: 5px !important;
+        margin-bottom: 4px;
+      }
+      .manage-tags {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .select2-container {
+        width: 100% !important;
+      }
+      .select2-container--default .select2-selection--single {
+        background-color: transparent !important;
+        border: 1px solid #222222 !important;
+      }
+      .updatedStatus {
+        background-color: #222222;
+        padding: 14px 12px !important;
+        color: #e0e0e0;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+      .elditTokenPageMain {
+        border-top-left-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+      }
+      .elditTokenPageMainleft {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+      }
+      .dataTables_wrapper .dataTables_length,
+      .dataTables_wrapper .dataTables_filter,
+      .dataTables_wrapper .dataTables_info,
+      .dataTables_wrapper .dataTables_processing,
+      .dataTables_wrapper .dataTables_paginate {
+        margin-left: 70px;
+      }
+      .toggle-menu {
+        position: absolute;
+        padding: 0.5rem 1rem;
+        background-color: transparent !important;
+        border: 1px solid #222222;
+        color: #e0e0e0;
+        border-radius: 6px;
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        font-size: 13px !important;
+        cursor: pointer;
+      }
+      .sidebar {
+        width: 300px;
+        height: 100%;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        padding: 15px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        padding: 10px;
+      }
+
+      .sidebar ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .sidebar.active {
+        left: 0; /* Show the sidebar when active */
+      }
+      .searchFilterDropdown {
+        background-color: transparent !important;
+        padding: 8px 9px;
+        border: 1px solid #222222;
+        border-radius: 6px;
+        color: white !important;
+        width: 150px !important;
+      }
+      #addressTagDropDown option {
         background-color: red !important;
       }
-      .edit-icon-div{
-        border-radius: 6px !important;
+      .toggle-menu-Icon-Tab {
+        display: flex;
+        align-items: center;
+        gap: 40px;
       }
     </style>
   </head>
   <body>
     <div class="card">
+      <div class="top_buttons">
+        <span>Token Dashboard</span>
+      </div>
+      <div class="toggle-menu">
+        <img src="./menuIcon.png" width="17" height="17" alt="." />
+      </div>
       <table id="token_table" class="display" style="width: 100%">
         <thead>
           <tr>
@@ -43,6 +157,7 @@
             <th>Address</th>
             <th>IsMainToken</th>
             <th>IsScamToken</th>
+            <th>Tags</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -55,30 +170,92 @@
             <th>Address</th>
             <th>IsMainToken</th>
             <th>IsScamToken</th>
+            <th>Tags</th>
             <th>Action</th>
           </tr>
         </tfoot>
       </table>
     </div>
-
+    <div class="sidebar">
+      <div
+        style="
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        
+          cursor: pointer;
+          border: 0px !important;
+          position:  relative !important;
+        "
+         class="toggle-menu"
+      >
+      <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; ">
+        <span style="font-size: 20px; font-weight: 400;">Menu</span>
+        <img src="./cross-coin.svg" width="17" height="17" alt="cross" />
+      </div>
+      
+      </div>
+      <ul>
+        <li><a href="http://127.0.0.1:5500/index.html">Dashboard</a></li>
+        <li><a href="http://127.0.0.1:5500/Token.html">Tokens</a></li>
+        <li><a href="http://144.76.163.123/dashboard/reports/pnl_bot_profiles/">Report</a></li>
+      </ul>
+    </div>
     <!-- modal -->
     <div class="edit-trade-modal modal modal-summary" id="edit-trade-modal">
       <div class="edit-modal-dialog">
         <div class="modal-content">
           <div class="close-search-modal">
-            <div class="cross-svg">
-              <span><img src="cross-coin.svg" alt="" /></span>
+            <div class="manage-tags">
+              <div style="width: auto">
+                <span>Manage Tags</span>
+              </div>
+              <div class="remove-modal heading-tag">
+                <img src="cross-coin.svg" alt="" />
+              </div>
             </div>
           </div>
+          <div style="margin-top: 15px; margin-bottom: 15px">
+            Token Id: <span class="popup-tokenId"></span>
+          </div>
           <div class="addTagField">
-            <select
-              id="mySelect"
-              class="js-example-tags"
-              multiple="multiple"
-              style="width: 80%"
-            ></select>
+            <div style="width: 80% !important">
+              <select
+                id="mySelect"
+                class="js-example-tags"
+                multiple="multiple"
+                style="width: 80%"
+              ></select>
+            </div>
             <div>
-              <button class="addTag" id="addTag">Add Tag</button>
+              <button class="addTag" id="addTag">Update Tag</button>
+            </div>
+          </div>
+          <div style="margin-top: 35px !important">
+            <div>
+              <label>IsMainToken</label>
+              <select
+                class="js-example-basic-single main-token"
+                id="IsMainToken"
+              >
+                <option value="">Select Status</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
+              </select>
+            </div>
+            <div style="margin-top: 10px">
+              <label>IsScamToken</label>
+              <select
+                class="js-example-basic-single scam-token"
+                id="IsScamToken"
+              >
+                <option value="">Select Status</option>
+                <option value="false">False</option>
+                <option value="true">True</option>
+              </select>
+            </div>
+            <div style="margin-top: 10px; display: flex; justify-content: end">
+              <button class="updatedStatus" id="">Update Status</button>
             </div>
           </div>
         </div>

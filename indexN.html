@@ -68,6 +68,105 @@
 
         height: 40px;
       }
+      .label {
+        display: inline-block;
+        padding: 4px 5px;
+        background-color: #3498db;
+        color: #ffffff;
+        border-radius: 20px;
+        font-family: Arial, sans-serif;
+        margin-right: 5px !important;
+        margin-bottom: 4px;
+      }
+      .select2-container {
+        width: 100% !important;
+      }
+      .select2-container--default .select2-selection--single {
+        background-color: transparent !important;
+        border: 1px solid #222222 !important;
+      }
+      .updatedStatus {
+        background-color: #222222;
+        padding: 14px 12px !important;
+        color: #e0e0e0;
+        cursor: pointer;
+        border-radius: 6px;
+      }
+      .select2-container {
+        width: 100% !important;
+      }
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-selection__choice__remove:hover,
+      .select2-container--default
+        .select2-selection--multiple
+        .select2-selection__choice__remove:focus {
+        background-color: transparent;
+        color: white;
+      }
+      .sidebar {
+        width: 300px;
+        height: 100%;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        left: -300px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+        padding: 15px;
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .sidebar ul li {
+        padding: 10px;
+      }
+
+      .sidebar ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .sidebar.active {
+        left: 0; /* Show the sidebar when active */
+      }
+      .searchFilterDropdown {
+        background-color: transparent !important;
+        padding: 8px 9px;
+        border: 1px solid #222222;
+        border-radius: 6px;
+        color: white !important;
+        width: 150px !important;
+      }
+      #addressTagDropDown option {
+        background-color: red !important;
+      }
+      .toggle-menu {
+        padding: 0.5rem 1rem;
+        background-color: transparent !important;
+        border: 1px solid #222222;
+        color: #e0e0e0;
+        border-radius: 6px;
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        font-size: 13px !important;
+        cursor: pointer;
+      }
+
+      .dataTables_length {
+        /* position: fixed !important; */
+        /* z-index: 1000; */
+      }
+      .toggle-menu-Icon-Tab {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
     </style>
   </head>
 
@@ -79,12 +178,18 @@
 
       <span id="${id}" class="homeTableAddress"></span>
       <div class="top_buttons">
-        <span>P&L Dashboard</span>
+        <div class="toggle-menu-Icon-Tab">
+          <div class="toggle-menu">
+            <img src="./menuIcon.png" width="17" height="17" alt="." />
+          </div>
+          <span>P&L Dashboard</span>
+        </div>
         <button id="export-all" class="dt-button download-btn">
           <img src="./arrow.png" width="17" height="17" alt="D" />
           <span> Export All </span>
         </button>
       </div>
+
       <div class="card">
         <!-- <div class="title-head">
                 <h2>Lemuria</h2>
@@ -103,6 +208,7 @@
           </div>
    
         </div> -->
+
         <div class="statsinfo startBlockEnd">
           <span class="sBlockCont">
             <span class="dot"></span>
@@ -127,7 +233,7 @@
               <th>Realized Pnl</th>
               <th>UnRealized Pnl</th>
               <th>TxCount</th>
-              <!-- <th>Transfer Value</th> -->
+              <th>Tags</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -139,131 +245,164 @@
               <th>Realized Pnl</th>
               <th>UnRealized Pnl</th>
               <th>TxCount</th>
-              <!-- <th>Transfer Value</th> -->
+              <th>Tags</th>
               <th>Action</th>
             </tr>
           </tfoot>
         </table>
       </div>
-    </div>
-    <!-- modal 1 -->
-    <div id="viewTrade-Modal" class="modal modal-summary viewTrade-Modal">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="title-head">
-            <h2>Trades: <a class="address11" href="#" target="_blank"></a></h2>
+
+      <div class="sidebar">
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+            border: 0px !important;
+          "
+          class="toggle-menu"
+        >
+          <div style="display: flex;
+          justify-content: space-between;align-items: center; width: 100%;">
+            <span style="font-size: 20px; font-weight: 400;">Menu</span>
+            <img src="./cross-coin.svg" width="17" height="17" alt="cross" />
           </div>
-          <div class="cross-svg">
-            <span><img src="cross-coin.svg" alt="" /></span>
+        </div>
+        <ul>
+          <li><a href="http://127.0.0.1:5500/index.html">Dashboard</a></li>
+          <li><a href="http://127.0.0.1:5500/Token.html">Tokens</a></li>
+          <li><a href="http://144.76.163.123/dashboard/reports/pnl_bot_profiles/">Report</a></li>
+        </ul>
+      </div>
+      <!-- modal 1 -->
+      <div id="viewTrade-Modal" class="modal modal-summary viewTrade-Modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="title-head">
+              <h2>
+                Trades: <a class="address11" href="#" target="_blank"></a>
+              </h2>
+            </div>
+            <div class="cross-svg">
+              <span><img src="cross-coin.svg" alt="" /></span>
+            </div>
+            <table id="dt_mtable" class="display dataTable" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Address</th>
+                  <th>TxID</th>
+                  <th title="From Token">From</th>
+                  <th title="To Token">To</th>
+                  <th>From Amount</th>
+                  <th>To Amount</th>
+                  <th>$From Amount</th>
+                  <th>$To Amount</th>
+                  <th title="PNL USD">P&L</th>
+                  <th>P&L ETH</th>
+                  <th>Date</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Address</th>
+                  <th>TxID</th>
+                  <th title="From Token">From</th>
+                  <th title="To Token">To</th>
+                  <th>From Amount</th>
+                  <th>To Amount</th>
+                  <th>$From Amount</th>
+                  <th>$To Amount</th>
+                  <th title="PNL USD">P&L</th>
+                  <th>P&L ETH</th>
+                  <th>Date</th>
+                  <th>Price</th>
+                </tr>
+              </tfoot>
+            </table>
           </div>
-          <table id="dt_mtable" class="display dataTable" style="width: 100%">
-            <thead>
-              <tr>
-                <th>Address</th>
-                <th>TxID</th>
-                <th title="From Token">From</th>
-                <th title="To Token">To</th>
-                <th>From Amount</th>
-                <th>To Amount</th>
-                <th>$From Amount</th>
-                <th>$To Amount</th>
-                <th title="PNL USD">P&L</th>
-                <th>P&L ETH</th>
-                <th>Date</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>Address</th>
-                <th>TxID</th>
-                <th title="From Token">From</th>
-                <th title="To Token">To</th>
-                <th>From Amount</th>
-                <th>To Amount</th>
-                <th>$From Amount</th>
-                <th>$To Amount</th>
-                <th title="PNL USD">P&L</th>
-                <th>P&L ETH</th>
-                <th>Date</th>
-                <th>Price</th>
-              </tr>
-            </tfoot>
-          </table>
         </div>
       </div>
-    </div>
-    <!-- modal 2 -->
-    <div
-      id="viewTrade-Modal-pnl"
-      class="modal modal-summary viewTrade-Modal-pnl"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="title-head">
-            <h2>PNL <a class="address11" href="#" target="_blank"></a></h2>
-          </div>
-          <div class="cross-svg">
-            <span><img src="cross-coin.svg" alt="" /></span>
-          </div>
-          <table id="dt_mtable_pnl" class="display" style="width: 100%">
-            <thead>
-              <tr>
-                <th>Address</th>
-                <th>Token</th>
-                <th>Bought</th>
-                <th>Sold</th>
-                <th>Un Sold</th>
-                <th>Realized P&L</th>
-                <th>UnRealized P&L</th>
-                <th>Total P&L</th>
-                <!-- <th>Transfer Value</th> -->
-                <th>TradeCount</th>
-                <th>Status</th>
-                <th>Entry Price</th>
-                <th>Exit Price</th>
-                <th>Entry Date</th>
-                <th>Exit Date</th>
-              </tr>
-            </thead>
+      <!-- modal 2 -->
+      <div
+        id="viewTrade-Modal-pnl"
+        class="modal modal-summary viewTrade-Modal-pnl"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="title-head">
+              <h2>PNL <a class="address11" href="#" target="_blank"></a></h2>
+            </div>
+            <div class="cross-svg">
+              <span><img src="cross-coin.svg" alt="" /></span>
+            </div>
+            <table id="dt_mtable_pnl" class="display" style="width: 100%">
+              <thead>
+                <tr>
+                  <th>Address</th>
+                  <th>Token</th>
+                  <th>Bought</th>
+                  <th>Sold</th>
+                  <th>Un Sold</th>
+                  <th>Realized P&L</th>
+                  <th>UnRealized P&L</th>
+                  <th>Total P&L</th>
+                  <!-- <th>Transfer Value</th> -->
+                  <th>TradeCount</th>
+                  <th>Status</th>
+                  <th>Entry Price</th>
+                  <th>Exit Price</th>
+                  <th>Entry Date</th>
+                  <th>Exit Date</th>
+                </tr>
+              </thead>
 
-            <tfoot>
-              <tr>
-                <th>Address</th>
-                <th>Token</th>
-                <th>Bought</th>
-                <th>Sold</th>
-                <th>Un Sold</th>
-                <th>Realized P&L</th>
-                <th>UnRealized P&L</th>
-                <th>Total P&L</th>
-                <!-- <th>Transfer Value</th> -->
-                <th>TradeCount</th>
-                <th>Status</th>
-                <th>Entry Price</th>
-                <th>Exit Price</th>
-                <th>Entry Date</th>
-                <th>Exit Date</th>
-              </tr>
-            </tfoot>
-          </table>
+              <tfoot>
+                <tr>
+                  <th>Address</th>
+                  <th>Token</th>
+                  <th>Bought</th>
+                  <th>Sold</th>
+                  <th>Un Sold</th>
+                  <th>Realized P&L</th>
+                  <th>UnRealized P&L</th>
+                  <th>Total P&L</th>
+                  <!-- <th>Transfer Value</th> -->
+                  <th>TradeCount</th>
+                  <th>Status</th>
+                  <th>Entry Price</th>
+                  <th>Exit Price</th>
+                  <th>Entry Date</th>
+                  <th>Exit Date</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Modal 3 -->
-    <div class="edit-trade-modal modal modal-summary" id="edit-trade-modal">
-      <div class="edit-modal-dialog">
-        <div class="modal-content">
-          <div class="addTagField">
-            <select
-              id="mySelect"
-              class="js-example-tags"
-              multiple="multiple"
-              style="width: 80%"
-            ></select>
-            <div>
-              <button class="addTag" id="addTag">Add Tag</button>
+      <!-- Modal 3 -->
+      <div class="edit-trade-modal modal modal-summary" id="edit-trade-modal">
+        <div class="edit-modal-dialog">
+          <div class="modal-content">
+            <div style="margin-bottom: 5px">Manage Tags</div>
+            <div style="margin-bottom: 10px">
+              Address Id: <span class="tagAddressHome"></span>
+            </div>
+            <div class="addTagField">
+              <div style="width: 83.5% !important">
+                <select
+                  id="mySelect"
+                  class="js-example-tags"
+                  multiple="multiple"
+                  style="width: 80%"
+                ></select>
+              </div>
+              <div>
+                <button class="addTag" id="addTag">Add Tag</button>
+              </div>
             </div>
           </div>
         </div>
@@ -289,6 +428,9 @@
 
     <script>
       $(document).ready(function () {
+        $(".toggle-menu").click(function () {
+          $(".sidebar").toggleClass("active");
+        });
         $.post(
           "http://144.76.163.123/dashboard/datatable.php",
           {
@@ -382,7 +524,6 @@
           serverMethod: "post",
           oLanguage: { sProcessing: "<div id='loader'></div>" },
 
-          // ajax: '../../datatable.php', ///Path will change here
           ajax: {
             url: "http://144.76.163.123/dashboard/datatable.php",
             data: function (d) {
@@ -405,7 +546,21 @@
             { data: "RealizedPNL" },
             { data: "UnRealizedPNL" },
             { data: "TxCount" },
-            // { data: "TransferAmount" },
+            {
+              data: "Tags",
+              render: function (e) {
+                if (!e) {
+                  return null;
+                }
+                const arrayOfStrings = e.split(",");
+
+                const labelElements = arrayOfStrings.map(
+                  (string, index) =>
+                    `<div class="label" key=${index}>${string}</div>`
+                );
+                return labelElements.join("");
+              },
+            },
             {
               data: "Address",
               render: function (e) {
@@ -467,14 +622,15 @@
               val.search.search = "";
             });
           },
+
           columnDefs: [
             { targets: 0, orderable: false, searching: false, width: "10%" },
             { width: "10%", targets: 1 },
             { width: "10%", targets: 2 },
             { width: "10%", targets: 3 },
             { width: "10%", targets: 4 },
-            // { width: "10%", targets: 5 },
             { width: "10%", targets: 5, orderable: false },
+            { width: "10%", targets: 6, orderable: false },
           ],
           language: {
             lengthMenu: "_MENU_",
@@ -489,7 +645,6 @@
             var api = this.api();
             Api = this.api();
 
-            // For each column
             api
               .columns()
               .eq(0)
@@ -527,6 +682,41 @@
                 //         e.stopPropagation();
                 //     });
               });
+            // $.ajax({
+            //   url: "http://144.76.163.123/dashboard/address.php?action=get_all_address_tags",
+            //   method: "GET",
+            //   success: function (data) {
+            //     var options = "";
+            //     data.forEach(function (option) {
+            //       options += `<option value="${option}">${option}</option>`;
+            //     });
+
+            //     var target = $(table.column(5).header())
+            //       .closest("thead")
+            //       .find(".filters")
+            //       .children(":nth-last-child(2)");
+
+            //     target.empty();
+            //     target.html(`
+            //     <div class="custom-dropdown">
+            //       <select class="searchFilterDropdown" id="addressTagDropDown" multiple="multiple">
+            //         ${options}
+            //       </select>
+            //     </div>`);
+
+            //     $("#addressTagDropDown").select2({
+            //       placeholder: "Select",
+            //       closeOnSelect: false,
+            //       allowClear: true,
+            //       dropdownCssClass: "bigdrop",
+            //       multiple: true,
+            //       width: "100%",
+            //     });
+            //   },
+            //   error: function (xhr, status, error) {
+            //     console.error(error);
+            //   },
+            // });
           },
         });
 
@@ -1133,12 +1323,18 @@
 
         // This is Edit table
 
-        $("body").on("click", ".edit-modal", function () {
+        $("body").on("click", ".edit-modal", function (e) {
           $("#edit-trade-modal .modal-content").html(editPopup_bach);
           $("body").addClass("oflowhidden");
           $(".edit-trade-modal").toggleClass("show");
           $(".js-example-tags").select2({
             tags: true,
+          });
+          $(".tagAddressHome").html(e.currentTarget.id);
+
+          $(".updatedStatus").attr("id", e.currentTarget.id);
+          $(".js-example-basic-single").select2({
+            minimumResultsForSearch: Infinity,
           });
         });
       });
@@ -1187,13 +1383,15 @@
         $("body").removeClass("oflowhidden");
         $(".edit-trade-modal").removeClass("show");
       });
+      // http://144.76.163.123/dashboard/
+      //
 
-      var hostUrl = "http://144.76.163.123/dashboard"; // = window.location.protocol + "//" + window.location.hostname;
+      var hostUrl = "http://144.76.163.123/"; //window.location.protocol + "//" + window.location.hostname;
       $("#export-all").on("click", function () {
         // window.open(hostUrl + "/data1/datatable.php?exportcsv=1&data=" + encodeURIComponent(JSON.stringify(window.lastpayload)));
         window.open(
           hostUrl +
-            "/dashboard/datatable.php?exportcsv=1&data=" +
+            "dashboard/datatable.php?exportcsv=1&data=" +
             encodeURIComponent(JSON.stringify(window.lastpayload))
         );
       });
@@ -1253,7 +1451,7 @@
             select.val(allOptions).trigger("change");
           },
           error: function (xhr, status, error) {
-            alert(error);
+            alert("Something Went Wrong");
           },
         });
       });
@@ -1270,10 +1468,10 @@
           data: $.param({ tags: jsonData }),
           dataType: "json",
           success: function (data) {
-            alert(data);
+            alert("successful");
           },
           error: function (xhr, status, error) {
-            alert(error);
+            alert("Something Went Wrong");
           },
         });
       });
