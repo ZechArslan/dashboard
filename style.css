@@ -232,6 +232,7 @@ button.dt-button:hover {
   display: inline-block;
 }
 .date-range {
+  gap: 5;
 }
 .date-range input {
   background: transparent;
@@ -243,7 +244,23 @@ button.dt-button:hover {
   font-weight: 500;
   font-family: "Poppins";
 }
+.date-range button {
+  background: transparent;
+  color: white;
+  border: 1px solid #222222;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-family: "Poppins";
+  cursor: pointer;
+}
 .date-range input:focus {
+  color: #495057;
+  outline: 0;
+  box-shadow: 1px 1px 20px 0rem #3eb7f01f;
+}
+.date-range button:focus {
   color: #495057;
   outline: 0;
   box-shadow: 1px 1px 20px 0rem #3eb7f01f;

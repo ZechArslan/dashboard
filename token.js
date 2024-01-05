@@ -218,7 +218,35 @@ $(document).ready(function () {
         alert("Something Went Wrong");
       },
     });
+    $.ajax({
+      url: "http://144.76.163.123/dashboard/address.php?action=get_all_address_tags",
+      method: "GET",
+      dataType: "json",
+      success: function (data) {
+        var select = $("#mySelect");
+        select.empty();
+        setTimeout(() => {
+          var availableOptions = [];
+          
+          select.find("option").each(function () {
+            availableOptions.push($(this).val());
+          });
 
+          data.forEach(function (option) {
+            if (!availableOptions.includes(option)) {
+              select.append(new Option(option, option, false, false));
+            }
+          });
+
+          select.select2({
+            tags: true,
+          });
+        }, 1000);
+      },
+      error: function (xhr, status, error) {
+        alert("Something Went Wrong");
+      },
+    });
     $("#addTag").click(function () {
       var selectedTags = $("#mySelect").val();
       var jsonData = JSON.stringify(selectedTags);

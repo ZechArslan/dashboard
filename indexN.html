@@ -222,6 +222,10 @@
           </span>
         </div>
         <div class="date-range">
+          <button class="findThoDate" id="0">1 Day</button>
+          <button class="findThoDate" id="1">1 Week</button>
+          <button class="findThoDate" id="2">1 Month</button>
+          <button class="findThoDate" id="">All Time</button>
           <input id="daterangeval" type="text" name="daterange" value="" />
         </div>
 
@@ -264,16 +268,26 @@
           "
           class="toggle-menu"
         >
-          <div style="display: flex;
-          justify-content: space-between;align-items: center; width: 100%;">
-            <span style="font-size: 20px; font-weight: 400;">Menu</span>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+            "
+          >
+            <span style="font-size: 20px; font-weight: 400">Menu</span>
             <img src="./cross-coin.svg" width="17" height="17" alt="cross" />
           </div>
         </div>
         <ul>
-          <li><a href="http://127.0.0.1:5500/index.html">Dashboard</a></li>
-          <li><a href="http://127.0.0.1:5500/Token.html">Tokens</a></li>
-          <li><a href="http://144.76.163.123/dashboard/reports/pnl_bot_profiles/">Report</a></li>
+          <li><a href="http://144.76.163.123/index.html">Dashboard</a></li>
+          <li><a href="http://144.76.163.123/Token.html">Tokens</a></li>
+          <li>
+            <a href="http://144.76.163.123/dashboard/reports/pnl_bot_profiles/"
+              >Report</a
+            >
+          </li>
         </ul>
       </div>
       <!-- modal 1 -->
@@ -588,7 +602,7 @@
                         <img src="./stats.svg" alt="" />
                         </div>
                     </abbr>
-                    <abbr title="View PNL">
+                    <abbr title="Edit">
                         <div class="statisIcon actionsIcons earthIcon edit-modal" width="20px" height="20px" type="button" id="${e}">
                         <img src="./edit.png" alt="" />
                         </div>
@@ -718,6 +732,67 @@
             //   },
             // });
           },
+        });
+
+        $(".findThoDate").on("click", function (e) {
+          const currentDate = new Date();
+          let sixHoursBefore = new Date(currentDate);
+
+          function setDuration(datePar) {
+            const currentDate = new Date();
+            const currentDay = currentDate.getDate();
+
+            const sixDaysBefore = new Date(currentDate);
+            sixDaysBefore.setDate(currentDay - datePar);
+
+            const year = sixDaysBefore.getFullYear();
+            const month = sixDaysBefore.getMonth() + 1;
+            const day = sixDaysBefore.getDate();
+
+            return `${year}-${month.toString().padStart(2, "0")}-${day.toString().padStart(2, "0")}`;
+          }
+
+          function getCurrentDateTime() {
+            const currentDate = new Date();
+
+            const year = currentDate.getFullYear();
+            const month = (currentDate.getMonth() + 1)
+              .toString()
+              .padStart(2, "0");
+            const day = currentDate.getDate().toString().padStart(2, "0");
+            const hours = currentDate.getHours().toString().padStart(2, "0");
+            const minutes = currentDate
+              .getMinutes()
+              .toString()
+              .padStart(2, "0");
+            const seconds = currentDate
+              .getSeconds()
+              .toString()
+              .padStart(2, "0");
+
+            const formattedDateTime = `${year}-${month}-${day}`;
+            return formattedDateTime;
+          }
+
+          switch (e.currentTarget.id) {
+            case "0":
+              dateend = getCurrentDateTime();
+              datestart = setDuration(1);
+              break;
+            case "1":
+              dateend = getCurrentDateTime();
+              datestart = setDuration(7);
+              break;
+            case "2":
+              dateend = getCurrentDateTime();
+              datestart = setDuration(30);
+              break;
+
+            default:
+              null;
+          }
+
+          table.ajax.reload();
         });
 
         table.button().add(1, {
@@ -1428,6 +1503,7 @@
       var rowAddressTags = null;
       $("body").on("click", ".edit-modal", function (e) {
         rowAddressTags = e.currentTarget.id;
+
         $.ajax({
           url:
             "http://144.76.163.123/dashboard/address.php?action=get_address_tags&address_id=" +
@@ -1449,6 +1525,35 @@
               return option;
             });
             select.val(allOptions).trigger("change");
+          },
+          error: function (xhr, status, error) {
+            alert("Something Went Wrong");
+          },
+        });
+        $.ajax({
+          url: "http://144.76.163.123/dashboard/address.php?action=get_all_address_tags",
+          method: "GET",
+          dataType: "json",
+          success: function (data) {
+            var select = $("#mySelect");
+            select.empty();
+            setTimeout(() => {
+              var availableOptions = [];
+
+              select.find("option").each(function () {
+                availableOptions.push($(this).val());
+              });
+
+              data.forEach(function (option) {
+                if (!availableOptions.includes(option)) {
+                  select.append(new Option(option, option, false, false));
+                }
+              });
+
+              select.select2({
+                tags: true,
+              });
+            }, 1000);
           },
           error: function (xhr, status, error) {
             alert("Something Went Wrong");
