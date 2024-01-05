@@ -72,12 +72,12 @@ $(document).ready(function () {
         <div class="eatherIconcontainer">
             <abbr title="View PNL">
                 <div class="statisIcon actionsIcons erthIcon elditTokenPageMainleft edit-modal edit-icon-div" width="20px" height="20px" type="button" id="${e}" >
-                <img src="./edit.png" alt="" />
+                <img src="./images/edit.png" alt="" />
                 </div>
             </abbr>
             <abbr title="View PNL">
                 <div class="statisIcon actionsIcons elditTokenPageMain erthIcon  edit-icon-div" width="20px" height="20px" type="button" id="${e}" >
-                <img src="./viewM.png" alt="" />
+                <img src="./images/viewM.png" alt="" />
                 </div>
             </abbr>
         </div> 

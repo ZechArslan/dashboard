@@ -4,149 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Token</title>
-    <link rel="stylesheet" href="daterangepicker.css" />
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" /> -->
-    <link rel="stylesheet" href="datatables.min.css" />
-    <link rel="stylesheet" href="style.css?v=223343" />
-    <link rel="stylesheet" href="Styles-c.css?v=1" />
+    <link rel="stylesheet" href="Styles/daterangepicker.css" />
+    <link rel="stylesheet" href="Styles/datatables.min.css" />
+    <link rel="stylesheet" href="Styles/style.css?v=223343" />
+    <link rel="stylesheet" href="Styles/Styles-c.css?v=1" />
     <link href="dist/css/select2.min.css" rel="stylesheet" />
-    <style>
-      .select2-container--default
-        .select2-selection--multiple
-        .select2-selection__choice__remove:hover,
-      .select2-container--default
-        .select2-selection--multiple
-        .select2-selection__choice__remove:focus {
-        background-color: transparent !important;
-        color: white !important;
-      }
-      .close-search-modal {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-      }
-      .edit-icon-div {
-        border-radius: 6px !important;
-      }
-      .heading-tag {
-      }
-      .heading-tag img {
-        width: 15px;
-        cursor: pointer;
-      }
-      .label {
-        display: inline-block;
-        padding: 4px 5px;
-        background-color: #3498db;
-        color: #ffffff;
-        border-radius: 20px;
-        font-family: Arial, sans-serif;
-        margin-right: 5px !important;
-        margin-bottom: 4px;
-      }
-      .manage-tags {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .select2-container {
-        width: 100% !important;
-      }
-      .select2-container--default .select2-selection--single {
-        background-color: transparent !important;
-        border: 1px solid #222222 !important;
-      }
-      .updatedStatus {
-        background-color: #222222;
-        padding: 14px 12px !important;
-        color: #e0e0e0;
-        cursor: pointer;
-        border-radius: 6px;
-      }
-      .elditTokenPageMain {
-        border-top-left-radius: 0px !important;
-        border-bottom-left-radius: 0px !important;
-      }
-      .elditTokenPageMainleft {
-        border-top-right-radius: 0px !important;
-        border-bottom-right-radius: 0px !important;
-      }
-      .dataTables_wrapper .dataTables_length,
-      .dataTables_wrapper .dataTables_filter,
-      .dataTables_wrapper .dataTables_info,
-      .dataTables_wrapper .dataTables_processing,
-      .dataTables_wrapper .dataTables_paginate {
-        margin-left: 70px;
-      }
-      .toggle-menu {
-        position: absolute;
-        padding: 0.5rem 1rem;
-        background-color: transparent !important;
-        border: 1px solid #222222;
-        color: #e0e0e0;
-        border-radius: 6px;
-        cursor: pointer;
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        font-size: 13px !important;
-        cursor: pointer;
-      }
-      .sidebar {
-        width: 300px;
-        height: 100%;
-        background-color: #333;
-        position: fixed;
-        top: 0;
-        left: -300px;
-        transition: left 0.3s ease;
-        z-index: 1000;
-        padding: 15px;
-      }
-
-      .sidebar ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      .sidebar ul li {
-        padding: 10px;
-      }
-
-      .sidebar ul li a {
-        color: #fff;
-        text-decoration: none;
-      }
-
-      .sidebar.active {
-        left: 0; /* Show the sidebar when active */
-      }
-      .searchFilterDropdown {
-        background-color: transparent !important;
-        padding: 8px 9px;
-        border: 1px solid #222222;
-        border-radius: 6px;
-        color: white !important;
-        width: 150px !important;
-      }
-      #addressTagDropDown option {
-        background-color: red !important;
-      }
-      .toggle-menu-Icon-Tab {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-      }
-    </style>
+    <link href="Styles/Token.css" rel="stylesheet" />
   </head>
   <body>
+    <!-- Main Container -->
     <div class="card">
       <div class="top_buttons">
         <span>Token Dashboard</span>
       </div>
       <div class="toggle-menu">
-        <img src="./menuIcon.png" width="17" height="17" alt="." />
+        <img src="./images/menuIcon.png" width="17" height="17" alt="." />
       </div>
       <table id="token_table" class="display" style="width: 100%">
         <thead>
@@ -176,31 +48,44 @@
         </tfoot>
       </table>
     </div>
+
+    <!-- Side Menu -->
     <div class="sidebar">
       <div
         style="
           display: flex;
           justify-content: flex-end;
           align-items: center;
-        
+
           cursor: pointer;
           border: 0px !important;
-          position:  relative !important;
+          position: relative !important;
         "
-         class="toggle-menu"
+        class="toggle-menu"
       >
-      <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; ">
-        <span style="font-size: 20px; font-weight: 400;">Menu</span>
-        <img src="./cross-coin.svg" width="17" height="17" alt="cross" />
-      </div>
-      
+        <div
+          style="
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <span style="font-size: 20px; font-weight: 400">Menu</span>
+          <img src="./images/cross-coin.svg" width="17" height="17" alt="cross" />
+        </div>
       </div>
       <ul>
         <li><a href="http://144.76.163.123/index.html">Dashboard</a></li>
         <li><a href="http://144.76.163.123/Token.html">Tokens</a></li>
-        <li><a href="http://144.76.163.123/dashboard/reports/pnl_bot_profiles/">Report</a></li>
+        <li>
+          <a href="http://144.76.163.123/dashboard/reports/pnl_bot_profiles/"
+            >Report</a
+          >
+        </li>
       </ul>
     </div>
+
     <!-- modal -->
     <div class="edit-trade-modal modal modal-summary" id="edit-trade-modal">
       <div class="edit-modal-dialog">
@@ -211,7 +96,7 @@
                 <span>Manage Tags</span>
               </div>
               <div class="remove-modal heading-tag">
-                <img src="cross-coin.svg" alt="" />
+                <img src="./images/cross-coin.svg" alt="" />
               </div>
             </div>
           </div>
@@ -262,17 +147,17 @@
       </div>
     </div>
 
-    <!-- scripts -->
-    <script src="jquery-3.6.0.min.js"></script>
-    <script src="datatables.min.js"></script>
+    <!-- All scripts -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/datatables.min.js"></script>
     <script
       type="text/javascript"
       src="https://cdn.datatables.net/plug-ins/1.11.5/api/sum().js"
     ></script>
-    <script type="text/javascript" src="moment.min.js"></script>
-    <script type="text/javascript" src="daterangepicker.js"></script>
-    <script src="buttons.colVis.min.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/daterangepicker.js"></script>
+    <script src="js/buttons.colVis.min.js"></script>
     <script src="dist/js/select2.min.js"></script>
-    <script src="token.js"></script>
+    <script src="js/token.js"></script>
   </body>
 </html>
