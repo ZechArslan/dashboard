@@ -464,7 +464,7 @@ $(document).ready(function () {
         },
         {
           data: "TOTOKEN",
-          render: function (data) {
+          render: function (data) {      
             const timestamp = new Date().getTime();
             var range = document.createRange();
             var fragment = range.createContextualFragment(data);
@@ -674,7 +674,7 @@ $(document).ready(function () {
           e.currentTarget.id.substr(e.currentTarget.id.length - 9));
   });
 
-  $("#dt_mtable").on("click", ".viewMoreContent", function (e) {
+  $("#dt_mtable").on("click", ".viewMoreContent", async function (e) {
     if (e.currentTarget.innerHTML.length > 23) {
       let strIndex = e.currentTarget.id.indexOf("*$");
       let actutalString = e.currentTarget.id.slice(0, strIndex);
